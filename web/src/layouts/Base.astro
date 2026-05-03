@@ -40,8 +40,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
   <body>
     <header class="site-header">
       <div class="shell site-header__inner">
-        <a class="site-header__brand" href="/" aria-label="weathership home">
-          <img src="/brand/logo/mark/mark.svg" alt="weathership" width="32" height="32" />
+        <a class="site-header__brand" href="/">
+          <img src="/brand/logo/mark/mark.svg" alt="" width="28" height="28" />
+          <span class="site-header__wordmark">weathership</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/about">About</a>
@@ -58,8 +59,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
 
     <footer class="site-footer">
       <div class="shell site-footer__inner">
-        <a class="site-footer__brand" href="/" aria-label="weathership home">
-          <img src="/brand/logo/mark/mark.svg" alt="weathership" width="24" height="24" />
+        <a class="site-footer__brand" href="/">
+          <img src="/brand/logo/mark/mark.svg" alt="" width="22" height="22" />
+          <span class="site-footer__wordmark">weathership</span>
         </a>
         <p class="caption">we who saw the deep.</p>
         <p class="caption">
@@ -81,12 +83,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
         padding-bottom: 18px;
         gap: 24px;
       }
+      /* Optical-flush left edge: the mark SVG has internal padding
+       * (its leftmost ink — the horizon stripe — sits at x=3 of a 24-unit
+       * viewBox, ~12.5% inset). Pull the brand link left by that amount so
+       * the mark's painted edge aligns with the same content margin used
+       * by the hero wordmark below. */
       .site-header__brand {
         display: inline-flex;
         align-items: center;
+        gap: 10px;
         color: var(--ws-ink);
         text-decoration: none;
-        line-height: 0; /* keep the mark from inheriting body line-height */
+        margin-left: -4px;
+      }
+      .site-header__wordmark {
+        font-weight: 600;
+        letter-spacing: -0.01em;
       }
       .site-nav {
         display: flex;
@@ -115,9 +127,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
       .site-footer__brand {
         display: inline-flex;
         align-items: center;
+        gap: 10px;
         color: var(--ws-ink);
         text-decoration: none;
-        line-height: 0;
+        font-weight: 600;
+        margin-left: -3px; /* same optical-flush trick at footer mark size */
+      }
+      .site-footer__wordmark {
+        letter-spacing: -0.01em;
       }
       @media (max-width: 640px) {
         .site-header__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
