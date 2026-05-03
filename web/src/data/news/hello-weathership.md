@@ -27,4 +27,4 @@ If you want to know what's coming next, the [projects page](/projects/)
 is the canonical list. If you want the mark, palette, and
 publication-ready assets, the [media kit](/media-kit/) has them.
 
-Standing watch. We who saw the deep.
+we who saw the deep.

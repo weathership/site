@@ -9,7 +9,7 @@
 
   <!-- Display 56 / 600 -->
   <text x="32" y="60" class="label">DISPLAY · INTER 600 · 56 / 1.05</text>
-  <text x="32" y="116" class="sans" font-size="56" font-weight="600" letter-spacing="-1.1">Standing watch.</text>
+  <text x="32" y="116" class="sans" font-size="56" font-weight="600" letter-spacing="-1.1">we who saw the deep.</text>
 
   <!-- H1 40 / 600 -->
   <text x="32" y="174" class="label">H1 · INTER 600 · 40 / 1.15</text>
