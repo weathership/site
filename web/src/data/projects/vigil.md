@@ -69,5 +69,5 @@ be. Vigil is the slow, semantically rich, cryptographically hardened
 global cortex of the weathership architecture: ROC's URI-addressable
 abstraction stretched over Venti's content-addressable substrate.
 
-The README is in active development; the most current technical
-detail lives in the repository.
+The project is in active, early development and will be released
+under the Apache 2.0 license.
