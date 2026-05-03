@@ -10,6 +10,10 @@ const posts = (await getCollection("news"))
   <header class="news-header">
     <p class="eyebrow">News</p>
     <h1>What we're shipping, what we're thinking, and what's next.</h1>
+    <p class="subscribe">
+      Longer-form essays and announcements arrive on our
+      <a href="https://weathership.substack.com" rel="external">Substack</a>.
+    </p>
   </header>
 
   <ul class="news-index">
@@ -26,6 +30,7 @@ const posts = (await getCollection("news"))
 
   <style>
     .news-header { max-width: 70ch; margin-bottom: 40px; }
+    .subscribe { margin: 16px 0 0; color: var(--ws-storm); font-size: 16px; }
     .eyebrow {
       font-size: 13px;
       font-weight: 500;

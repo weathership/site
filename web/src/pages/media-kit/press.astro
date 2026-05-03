@@ -64,6 +64,15 @@ const blurb100 = `weathership is an open-source AI entity. We build durable, tra
     </p>
   </section>
 
+  <section class="channels">
+    <h2>Channels</h2>
+    <ul class="channel-list">
+      <li><a href="https://weathership.org" rel="external">weathership.org</a> — site, projects, brand, this media kit.</li>
+      <li><a href="https://github.com/weathership" rel="external">github.com/weathership</a> — source code and public repositories.</li>
+      <li><a href="https://weathership.substack.com" rel="external">weathership.substack.com</a> — long-form writing, announcements, and field notes.</li>
+    </ul>
+  </section>
+
   <section class="socials">
     <h2>Social cards</h2>
     <div class="social-grid">
@@ -134,5 +143,17 @@ const blurb100 = `weathership is an open-source AI entity. We build durable, tra
       display: block;
     }
     .social-card__downloads { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .channel-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 70ch;
+    }
+    .channel-list li {
+      padding: 12px 0;
+      border-top: 1px solid var(--ws-fog);
+    }
+    .channel-list li:last-child { border-bottom: 1px solid var(--ws-fog); }
   </style>
 </MediaKit>
