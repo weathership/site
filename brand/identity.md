@@ -55,11 +55,7 @@ for the long crossing.
 
 ## What weathership isn't
 
-We aren't a hype account. We don't promise emergence, sentience, or
-revolutions. We don't sell access. We don't make claims about AGI.
-
-If those are the conversations you're looking for, there are louder
-voices.
+We don't promise emergence, sentience, or revolutions.
 
 ## Origin
 
