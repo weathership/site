@@ -13,7 +13,8 @@ const news = (await getCollection("news"))
 <Base>
   <section class="hero">
     <p class="hero__eyebrow">An open-source AI entity</p>
-    <h1 class="hero__title">Read the weather.<br/>Plan the crossing.</h1>
+    <h1 class="hero__title">weathership</h1>
+    <p class="hero__tagline">Standing watch.<br/>He who saw the deep.</p>
     <p class="hero__lede">
       weathership builds durable, transparent software that reads the
       conditions of a problem and turns that reading into action — across
@@ -76,13 +77,24 @@ const news = (await getCollection("news"))
     }
     .hero__title {
       margin: 0;
-      font-size: clamp(40px, 6vw, 56px);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
+      font-size: clamp(56px, 9vw, 96px);
+      letter-spacing: -0.03em;
+      line-height: 1;
       color: var(--ws-ink);
+      font-weight: 600;
+    }
+    .hero__tagline {
+      margin: 16px 0 0;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.015em;
+      line-height: 1.1;
+      color: var(--ws-ink);
+      font-weight: 600;
+      font-style: italic;
+      max-width: 24ch;
     }
     .hero__lede {
-      margin: 24px 0 32px;
+      margin: 32px 0;
       font-size: 19px;
       color: var(--ws-storm);
       max-width: 60ch;

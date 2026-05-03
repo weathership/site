@@ -15,7 +15,18 @@ station that keeps watch on the way there.
 
 ## Tagline
 
-> Read the weather. Plan the crossing.
+> Standing watch. He who saw the deep.
+
+The line is a deliberate echo of the opening of the Epic of Gilgamesh,
+which addresses its king as *"He who saw the Deep"* — the one who
+plunged into the abyss, read its conditions, and returned with
+hard-won truth. weathership stations itself in the data ocean for the
+same reason: to read what's actually out there, not what's comfortable.
+
+Use the singular form (*"He who saw the deep."*) for brand surfaces.
+A collective form (*"We who saw the deep."*) is admissible for
+crew-voiced contexts (engineering posts, contributor channels) but the
+default canonical line is singular.
 
 ## Mission
 
