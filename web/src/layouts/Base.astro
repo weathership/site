@@ -40,9 +40,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
   <body>
     <header class="site-header">
       <div class="shell site-header__inner">
-        <a class="site-header__brand" href="/">
-          <img src="/brand/logo/mark/mark.svg" alt="" width="28" height="28" />
-          <span class="site-header__wordmark">weathership</span>
+        <a class="site-header__brand" href="/" aria-label="weathership home">
+          <img src="/brand/logo/mark/mark.svg" alt="weathership" width="32" height="32" />
         </a>
         <nav class="site-nav" aria-label="Primary">
           <a href="/about">About</a>
@@ -59,9 +58,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
 
     <footer class="site-footer">
       <div class="shell site-footer__inner">
-        <a class="site-footer__brand" href="/">
-          <img src="/brand/logo/mark/mark.svg" alt="" width="22" height="22" />
-          <span>weathership</span>
+        <a class="site-footer__brand" href="/" aria-label="weathership home">
+          <img src="/brand/logo/mark/mark.svg" alt="weathership" width="24" height="24" />
         </a>
         <p class="caption">we who saw the deep.</p>
         <p class="caption">
@@ -86,13 +84,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
       .site-header__brand {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
         color: var(--ws-ink);
         text-decoration: none;
-      }
-      .site-header__wordmark {
-        font-weight: 600;
-        letter-spacing: -0.01em;
+        line-height: 0; /* keep the mark from inheriting body line-height */
       }
       .site-nav {
         display: flex;
@@ -121,10 +115,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
       .site-footer__brand {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
         color: var(--ws-ink);
         text-decoration: none;
-        font-weight: 600;
+        line-height: 0;
       }
       @media (max-width: 640px) {
         .site-header__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
