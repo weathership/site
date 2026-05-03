@@ -28,12 +28,21 @@ Feature: weathership site smoke tests
     Then the response status is 200
     And the response body contains "Hello, weathership"
 
-  Scenario: Projects index lists all three projects
+  Scenario: Projects index lists every project including preview entries
     When I GET "/projects/"
     Then the response status is 200
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"
+    And the response body contains "Vigil"
+
+  Scenario: Landing page surfaces only active projects
+    When I GET "/"
+    Then the response status is 200
+    And the response body contains "Aegir"
+    And the response body contains "Gaius"
+    And the response body contains "Reach"
+    And the response body does not contain "Vigil"
 
   Scenario: Media-kit overview links to subpages
     When I GET "/media-kit/"

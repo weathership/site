@@ -6,14 +6,15 @@ const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order
 );
 ---
-<Base title="Projects" description="weathership's open-source projects span enterprise data governance, graph-oriented exploration, and distributed manufacturing.">
+<Base title="Projects" description="weathership's open-source projects span enterprise data governance, graph-oriented exploration, distributed manufacturing, and a global compute fabric.">
   <header class="proj-header">
     <p class="eyebrow">Projects</p>
-    <h1>Three threads, one entity.</h1>
+    <h1>Different systems, same shape.</h1>
     <p class="lede">
-      Each project reads the conditions of a different system — relational
-      data, graph-oriented data, manufacturing telemetry — and turns that
-      reading into structured signal. Different domains, same shape.
+      Each project reads the conditions of a different system —
+      relational data, graph-oriented data, manufacturing telemetry,
+      and the compute fabric that federates them — and turns that
+      reading into structured signal.
     </p>
   </header>
 
@@ -23,7 +24,7 @@ const projects = (await getCollection("projects")).sort(
         <a href={`/projects/${p.id}/`}>
           <header>
             <h2>{p.data.name}</h2>
-            <span class={`tag tag--${p.data.status === 'stealth' ? 'stealth' : p.data.status === 'active' ? 'accent' : ''}`}>{p.data.status}</span>
+            <span class={`tag tag--${p.data.status === 'active' ? 'accent' : p.data.status}`}>{p.data.status}</span>
           </header>
           <p class="proj-row__tagline">{p.data.tagline}</p>
           <p class="proj-row__summary">{p.data.summary}</p>

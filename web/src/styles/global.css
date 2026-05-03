@@ -102,6 +102,11 @@ hr {
   color: var(--ws-paper);
 }
 
+.tag--preview {
+  background: color-mix(in oklab, var(--ws-sun) 22%, var(--ws-paper));
+  color: color-mix(in oklab, var(--ws-sun) 60%, var(--ws-ink));
+}
+
 .button {
   display: inline-flex;
   align-items: center;

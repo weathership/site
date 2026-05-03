@@ -36,6 +36,15 @@ def step_body_contains(context, needle: str) -> None:
     )
 
 
+@then('the response body does not contain "{needle}"')
+def step_body_does_not_contain(context, needle: str) -> None:
+    body = context.response.text
+    assert needle not in body, (
+        f"expected response body NOT to contain {needle!r}, but it was present "
+        f"in the response from {context.response.request.url}"
+    )
+
+
 @then('the response body equals "{expected}"')
 def step_body_equals(context, expected: str) -> None:
     # Behave un-escapes \n etc. in feature files when the step text

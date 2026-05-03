@@ -19,7 +19,7 @@ const { Content } = await render(project);
       <p class="eyebrow"><a href="/projects/">Projects</a></p>
       <div class="proj__head">
         <h1>{project.data.name}</h1>
-        <span class={`tag tag--${project.data.status === 'stealth' ? 'stealth' : project.data.status === 'active' ? 'accent' : ''}`}>{project.data.status}</span>
+        <span class={`tag tag--${project.data.status === 'active' ? 'accent' : project.data.status}`}>{project.data.status}</span>
       </div>
       <p class="proj__tagline">{project.data.tagline}</p>
       <div class="proj__links">
