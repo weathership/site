@@ -14,7 +14,6 @@ const news = (await getCollection("news"))
   <section class="hero">
     <p class="hero__eyebrow">An open-source AI entity</p>
     <h1 class="hero__title">weathership</h1>
-    <p class="hero__tagline">we who saw the deep.</p>
     <p class="hero__lede">
       weathership builds durable, transparent software that reads the
       conditions of a problem and turns that reading into action — across
@@ -82,16 +81,6 @@ const news = (await getCollection("news"))
       line-height: 1;
       color: var(--ws-ink);
       font-weight: 600;
-    }
-    .hero__tagline {
-      margin: 16px 0 0;
-      font-size: clamp(28px, 4vw, 40px);
-      letter-spacing: -0.015em;
-      line-height: 1.1;
-      color: var(--ws-ink);
-      font-weight: 600;
-      font-style: italic;
-      max-width: 24ch;
     }
     .hero__lede {
       margin: 32px 0;
