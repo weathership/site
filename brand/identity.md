@@ -15,18 +15,19 @@ station that keeps watch on the way there.
 
 ## Tagline
 
-> Standing watch. He who saw the deep.
+> Standing watch. We who saw the deep.
 
-The line is a deliberate echo of the opening of the Epic of Gilgamesh,
-which addresses its king as *"He who saw the Deep"* — the one who
-plunged into the abyss, read its conditions, and returned with
-hard-won truth. weathership stations itself in the data ocean for the
-same reason: to read what's actually out there, not what's comfortable.
+The line echoes the opening of the Epic of Gilgamesh, which addresses
+its king as *"He who saw the Deep"* — the one who plunged into the
+abyss, read its conditions, and returned with hard-won truth.
+weathership stations itself in the data ocean for the same reason:
+to read what's actually out there, not what's comfortable.
 
-Use the singular form (*"He who saw the deep."*) for brand surfaces.
-A collective form (*"We who saw the deep."*) is admissible for
-crew-voiced contexts (engineering posts, contributor channels) but the
-default canonical line is singular.
+We use the **plural** form. weathership is a collective — many people,
+many crossings, one watch — and the line carries an additional reading
+("our name is legion, for we are many") that fits an open-source crew.
+The singular *"He who saw the deep."* is the literary source we're
+honoring, not the form we use.
 
 ## Mission
 

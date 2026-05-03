@@ -33,8 +33,10 @@ web-preview:
     cd web && pnpm preview
 
 # Deploy to dev (weathership.zndx.org). Day-to-day target.
+# `--env=""` explicitly selects the top-level environment (dev), silencing
+# wrangler's ambiguity warning when env blocks are present.
 web-deploy:
-    cd web && pnpm run build && pnpm exec wrangler deploy
+    cd web && pnpm run build && pnpm exec wrangler deploy --env=""
 
 # Release to production (weathership.org). Explicit verb on purpose —
 # dev iterates with `just web-deploy`, releases use `just web-release`.
