@@ -17,9 +17,10 @@ open-source AI entity.
 | `pyproject.toml` | Python deps for behave/pytest. |
 | `justfile` | Task recipes (`just --list`). |
 
-Initial deployment target: `weathership.zndx.org` (Cloudflare Worker
-on the existing zndx.org zone). Will move to a dedicated
-`weathership.org` zone — worker code is unchanged.
+**Production:** `weathership.org` (Worker `weathership-web` on the
+weathership.org zone). Released via `just web-release`.
+**Development:** `weathership.zndx.org` (Worker `weathership-web-dev`
+on the zndx.org zone). Iterated via `just web-deploy`.
 
 ## Quick start
 
@@ -29,12 +30,15 @@ just bootstrap              # pnpm install + uv sync + brand-render
 just web-dev                # Astro dev server on http://localhost:4321
 just web-preview            # wrangler dev (after `just web-build`) on :8787
 just behave                 # BDD against $WEATHERSHIP_URL (default :8787)
+just web-deploy             # → dev (weathership.zndx.org)
+just web-release            # → production (weathership.org)
 just docs-serve             # engineering docs at http://localhost:3000
 ```
 
 ## Documentation
 
-- Public site: <https://weathership.zndx.org>
+- Production site: <https://weathership.org>
+- Development site: <https://weathership.zndx.org>
 - Engineering docs: <https://weathership.github.io/site/> (deployed by
   `.github/workflows/docs.yml`)
 - Brand source: [`brand/README.md`](./brand/README.md)

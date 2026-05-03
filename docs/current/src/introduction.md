@@ -20,8 +20,12 @@ public site at <https://weathership.zndx.org>.
 
 ## What's where externally
 
-- **Public site:** <https://weathership.zndx.org> (Cloudflare Worker on
-  the zndx.org zone).
+- **Production site:** <https://weathership.org> (Cloudflare Worker
+  `weathership-web` on the weathership.org zone).
+- **Development site:** <https://weathership.zndx.org> (Cloudflare
+  Worker `weathership-web-dev` on the zndx.org zone) — used for
+  iteration; releases roll forward to the production domain via
+  `just web-release`.
 - **mdbook documentation (this book):** GitHub Pages at
   `weathership.github.io/site/`.
 - **Source SVGs and assets:** in `brand/` here, mirrored at build time

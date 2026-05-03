@@ -1,10 +1,11 @@
 # Deploy
 
-Two deployment surfaces, deployed independently:
+Two deployment surfaces, two release targets:
 
-| Surface | Output | Trigger |
+| Surface | Target | Trigger |
 |---------|--------|---------|
-| Public site | Cloudflare Worker `weathership-web` | `pnpm deploy` from `web/` (or `.github/workflows/deploy.yml`) |
+| Development | `weathership.zndx.org` (Worker `weathership-web-dev`) | `just web-deploy` (or push to `main`) |
+| Production | `weathership.org` (Worker `weathership-web`) | `just web-release` (or `gh workflow run deploy.yml -f target=production`) |
 | Engineering docs (this book) | GitHub Pages, `weathership.github.io/site/` | `.github/workflows/docs.yml` on push to main |
 
 ## Public site
@@ -17,40 +18,59 @@ just web-dev            # Astro dev server on localhost:4321 (HMR)
 just web-build          # syncs brand/, builds Astro to web/dist/
 just web-preview        # wrangler dev against the built dist on localhost:8787
 just behave             # runs BDD against $WEATHERSHIP_URL (default localhost:8787)
-just web-deploy         # build + wrangler deploy
+just web-deploy         # → dev (weathership.zndx.org)
+just web-release        # → production (weathership.org)
 ```
 
 The first deploy from any machine requires:
 
 ```sh
-direnv exec . pnpm --filter weathership-web exec wrangler login
+pnpm exec wrangler login
 ```
 
-(Or run `pnpm exec wrangler login` from inside `web/`.) The login
-flow is browser-based and writes a token to `~/.config/.wrangler/`.
+(Or set `CLOUDFLARE_API_TOKEN` in the environment — the dev shell picks
+it up via direnv.)
 
 ### CI
 
-`.github/workflows/deploy.yml` runs on push to main when files under
+`.github/workflows/deploy.yml` runs on push to `main` when files under
 `web/`, `brand/`, or the workflow itself change. It:
 
 1. Installs Node 22 and pnpm.
-2. Runs `pnpm install` in `web/`.
-3. Runs `pnpm build`.
-4. Runs `pnpm exec wrangler deploy` with the
-   `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
+2. Runs `pnpm install --frozen-lockfile` in `web/`.
+3. Runs `pnpm typecheck`.
+4. Runs `pnpm run deploy:dev` (i.e., a dev deploy).
+
+**Production releases require an explicit `workflow_dispatch`** with
+`target: production`:
+
+```sh
+gh workflow run deploy.yml -f target=production
+```
+
+This is intentional: a `git push` to main never lands on production
+unattended; releases are deliberate.
 
 #### Required repository secrets
 
 - `CLOUDFLARE_API_TOKEN` — token with **Workers Scripts:Edit** scope on
-  the account. Optionally `Workers KV Storage:Edit` if KV is added later.
-- `CLOUDFLARE_ACCOUNT_ID` — the account that owns the worker.
+  the account.
+- `CLOUDFLARE_ACCOUNT_ID` — the account that owns the workers.
 
-Generate the token at: Cloudflare dashboard → My Profile → API Tokens →
-**Create Token** → use the "Edit Cloudflare Workers" template.
+The token does **not** need `zone:route` because custom domains are
+bound through the dashboard / API at infrastructure-setup time (see
+[DNS](./dns.md)). Routine deploys only update the worker code.
 
-The token does **not** need `zone:route` because the custom domain is
-bound through the dashboard (see [DNS](./dns.md)).
+### Naming convention
+
+- `wrangler deploy` (no flag) targets the **default** environment in
+  `wrangler.jsonc` — top-level `name: "weathership-web-dev"`.
+- `wrangler deploy --env production` targets `env.production` —
+  `name: "weathership-web"`.
+
+The default-is-dev choice deliberately makes accidental production
+deploys harder. Explicit verb (`web-release`) is required to push to
+the world-facing domain.
 
 ## Engineering docs (this book)
 

@@ -32,8 +32,14 @@ web-build:
 web-preview:
     cd web && pnpm preview
 
+# Deploy to dev (weathership.zndx.org). Day-to-day target.
 web-deploy:
-    cd web && pnpm deploy
+    cd web && pnpm run build && pnpm exec wrangler deploy
+
+# Release to production (weathership.org). Explicit verb on purpose —
+# dev iterates with `just web-deploy`, releases use `just web-release`.
+web-release:
+    cd web && pnpm run build && pnpm exec wrangler deploy --env production
 
 web-typecheck:
     cd web && pnpm typecheck

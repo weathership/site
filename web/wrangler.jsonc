@@ -1,6 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "weathership-web",
+
+  // Default (no --env) targets dev: weathership-web-dev on
+  // weathership.zndx.org. Day-to-day deploys go here.
+  "name": "weathership-web-dev",
   "main": "src/worker.ts",
   "compatibility_date": "2026-05-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -9,8 +12,25 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "404-page"
+  },
+
+  // `wrangler deploy --env production` targets prod: weathership-web on
+  // weathership.org. Released explicitly via `just web-release`.
+  // Custom domain bindings are set via the Cloudflare API (see
+  // docs/current/src/operations/dns.md), not declared here, because the
+  // initial deploy token lacked zone:route on zndx.org.
+  "env": {
+    "production": {
+      "name": "weathership-web",
+      "main": "src/worker.ts",
+      "compatibility_date": "2026-05-01",
+      "compatibility_flags": ["nodejs_compat"],
+      "workers_dev": false,
+      "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        "not_found_handling": "404-page"
+      }
+    }
   }
-  // Custom domain weathership.zndx.org is bound in the Cloudflare dashboard
-  // because the deploy token lacks zone:route permissions (matches gaius pattern).
-  // See docs/current/src/operations/dns.md.
 }

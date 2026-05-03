@@ -1,5 +1,9 @@
 name: deploy
 
+# Push to main → deploy to dev (weathership.zndx.org).
+# Production releases (weathership.org) are gated behind a manual
+# workflow_dispatch with `target: production` so prod is never the
+# default outcome of a merge.
 on:
   push:
     branches: [main]
@@ -8,9 +12,15 @@ on:
       - "brand/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
+    inputs:
+      target:
+        description: "Deploy target"
+        type: choice
+        options: [dev, production]
+        default: dev
 
 concurrency:
-  group: cloudflare-deploy
+  group: cloudflare-deploy-${{ github.event.inputs.target || 'dev' }}
   cancel-in-progress: false
 
 jobs:
@@ -38,9 +48,18 @@ jobs:
         working-directory: web
         run: pnpm typecheck
 
-      - name: Deploy to Cloudflare Workers
+      - name: Deploy to dev (weathership.zndx.org)
+        if: github.event.inputs.target != 'production'
         working-directory: web
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: pnpm deploy
+        run: pnpm run deploy:dev
+
+      - name: Release to production (weathership.org)
+        if: github.event.inputs.target == 'production'
+        working-directory: web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm run deploy:prod

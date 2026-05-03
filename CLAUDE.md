@@ -5,9 +5,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 This repo hosts the public web presence and brand package for
-**weathership.org**, an open-source AI entity. Initial deployment
-target is `weathership.zndx.org` — a Cloudflare Worker on the
-existing zndx.org zone — modeled on the sibling `gaius` project.
+**weathership.org**, an open-source AI entity. Modeled on the sibling
+`gaius` project.
+
+Two deploy targets, same Cloudflare account:
+
+- **Production** — `weathership.org` (Worker `weathership-web`,
+  weathership.org zone). Released via `just web-release`.
+- **Development** — `weathership.zndx.org` (Worker `weathership-web-dev`,
+  zndx.org zone). Iterated via `just web-deploy`.
+
+The default `wrangler deploy` (and `just web-deploy`) goes to **dev** so
+production is never the accidental outcome of a routine deploy.
 
 ## Repo layout
 
@@ -52,7 +61,8 @@ just bootstrap              # one-shot: pnpm install + uv sync + brand-render
 just web-dev                # Astro dev server (http://localhost:4321)
 just web-build              # syncs brand/, builds Astro to web/dist/
 just web-preview            # wrangler dev against built dist (http://localhost:8787)
-just web-deploy             # build + wrangler deploy
+just web-deploy             # build + wrangler deploy → DEV (weathership.zndx.org)
+just web-release            # build + wrangler deploy --env production → PROD (weathership.org)
 just web-typecheck          # astro check + tsc --noEmit
 just docs-serve             # mdbook live preview
 just docs-build             # mdbook build → docs/current/book/
@@ -90,17 +100,24 @@ inside `web/`.
 
 ## DNS & deploy
 
-The custom domain `weathership.zndx.org` is bound through the
-Cloudflare dashboard, not in `wrangler.jsonc`, because the deploy
-token lacks `zone:route` (matches the gaius pattern). See
-`docs/current/src/operations/dns.md` for the one-time setup.
+Custom domain bindings are set via the Cloudflare workers/domains API,
+not in `wrangler.jsonc`, matching the gaius pattern. See
+`docs/current/src/operations/dns.md` for command-level details.
+
+API tokens in the dev shell (via direnv):
+- `CLOUDFLARE_API_TOKEN` — account-scoped; deploys workers, manages
+  custom domain bindings on both zones.
+- `CF_WX_API_TOKEN` — zone-scoped to `weathership.org`; used for DNS
+  record management on that zone (e.g., the one-time apex cleanup).
 
 GitHub Actions:
 - `.github/workflows/docs.yml` — mdbook → GitHub Pages (path:
   `docs/current/**`).
 - `.github/workflows/deploy.yml` — Astro + wrangler deploy (path:
-  `web/**`, `brand/**`). Requires `CLOUDFLARE_API_TOKEN` and
-  `CLOUDFLARE_ACCOUNT_ID` repo secrets.
+  `web/**`, `brand/**`). Push-to-main → dev. Production releases
+  require explicit `gh workflow run deploy.yml -f target=production`.
+  Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo
+  secrets.
 
 ## Conventions
 
