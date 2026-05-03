@@ -1,0 +1,127 @@
+---
+import MediaKit from "../../layouts/MediaKit.astro";
+import { TYPE_RAMP } from "../../lib/brand-assets";
+---
+<MediaKit title="Typography" description="Inter for everything that isn't code; JetBrains Mono for code." section="typography">
+  <h1>Typography</h1>
+  <p class="lede">
+    Two faces, both variable, both self-hosted. Inter for everything that
+    isn't code; JetBrains Mono for code. No display faces, no script
+    faces, no novelty.
+  </p>
+
+  <section class="faces">
+    <h2>Faces</h2>
+    <div class="face-grid">
+      <article>
+        <h3>Inter</h3>
+        <p class="face-sample" style="font-family: var(--ws-font-sans); font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 1;">weathership</p>
+        <dl>
+          <dt>Use</dt><dd>Display, body, UI.</dd>
+          <dt>Weights</dt><dd>400, 500, 600, 700.</dd>
+          <dt>Source</dt><dd><a href="https://rsms.me/inter/" rel="external">rsms.me/inter</a></dd>
+          <dt>License</dt><dd>SIL OFL 1.1</dd>
+        </dl>
+      </article>
+      <article>
+        <h3>JetBrains Mono</h3>
+        <p class="face-sample" style="font-family: var(--ws-font-mono); font-size: 36px; font-weight: 400;">aeron::offer()</p>
+        <dl>
+          <dt>Use</dt><dd>Code blocks, terminal output, identifiers.</dd>
+          <dt>Weights</dt><dd>400, 500.</dd>
+          <dt>Source</dt><dd><a href="https://www.jetbrains.com/lp/mono/" rel="external">jetbrains.com/lp/mono</a></dd>
+          <dt>License</dt><dd>SIL OFL 1.1</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="ramp">
+    <h2>Type ramp</h2>
+    <div class="ramp-grid">
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Size</th><th>Weight</th><th>Line height</th><th>Tracking</th></tr>
+        </thead>
+        <tbody>
+          {TYPE_RAMP.map((r) => (
+            <tr>
+              <td><code>{r.role}</code></td>
+              <td>{r.size}</td>
+              <td>{r.weight}</td>
+              <td>{r.lineHeight}</td>
+              <td>{r.tracking}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="specimens">
+    <h2>Specimens</h2>
+    <p>The full hand-rendered type ramp:</p>
+    <img src="/brand/typography/specimens.svg" alt="weathership type specimens" class="specimen-image" />
+    <p><a href="/brand/typography/specimens.svg" download>Download specimens.svg</a></p>
+  </section>
+
+  <style>
+    .lede { font-size: 19px; color: var(--ws-storm); max-width: 70ch; }
+    .face-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .face-grid article {
+      padding: 24px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+    }
+    .face-grid h3 { margin: 0 0 12px; }
+    .face-sample {
+      margin: 0 0 16px;
+      color: var(--ws-ink);
+    }
+    .face-grid dl {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 4px 16px;
+      margin: 0;
+      font-size: 14px;
+    }
+    .face-grid dt { color: var(--ws-storm); }
+    .face-grid dd { margin: 0; }
+
+    .ramp-grid { margin-top: 24px; overflow-x: auto; }
+    .ramp-grid table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .ramp-grid th, .ramp-grid td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--ws-fog);
+    }
+    .ramp-grid th {
+      font-weight: 600;
+      color: var(--ws-storm);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .specimen-image {
+      max-width: 100%;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+      display: block;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 720px) {
+      .face-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</MediaKit>

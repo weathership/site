@@ -1,0 +1,76 @@
+---
+import MediaKit from "../../layouts/MediaKit.astro";
+---
+<MediaKit title="Overview" description="weathership media kit — logo, colors, typography, and press boilerplate. Every asset downloadable." section="index">
+  <h1>Media kit</h1>
+  <p class="lede">
+    Everything you need to write about, link to, or include weathership in
+    a deck. The mark, the wordmark, lockup variants, the palette, the
+    type system, and finished press boilerplate. Every asset is
+    downloadable as SVG; PNG renders are provided at standard sizes.
+  </p>
+
+  <ul class="mk-index">
+    <li>
+      <a href="/media-kit/logo">
+        <h2>Logo</h2>
+        <p>Mark, wordmark, and lockups in full-color and mono-on-light/dark variants. Includes safe-area and minimum-size guidance.</p>
+      </a>
+    </li>
+    <li>
+      <a href="/media-kit/colors">
+        <h2>Colors</h2>
+        <p>Six tokens. Hex, RGB, and HSL values with click-to-copy. Tokens.css available for download.</p>
+      </a>
+    </li>
+    <li>
+      <a href="/media-kit/typography">
+        <h2>Typography</h2>
+        <p>Inter for everything that isn't code. JetBrains Mono for code. Type ramp and rendered specimens.</p>
+      </a>
+    </li>
+    <li>
+      <a href="/media-kit/press">
+        <h2>Press</h2>
+        <p>50, 100, and 250-word boilerplate. Founder bio. Press contact. Social cards.</p>
+      </a>
+    </li>
+  </ul>
+
+  <h2>Direct downloads</h2>
+  <p>
+    Master assets:
+    <a href="/brand/logo/lockup/lockup-horizontal.svg" download>Lockup (SVG)</a> ·
+    <a href="/brand/logo/mark/mark.svg" download>Mark (SVG)</a> ·
+    <a href="/brand/social/og.png" download>OG image (PNG)</a> ·
+    <a href="/brand/colors/tokens.css" download>tokens.css</a>
+  </p>
+
+  <h2>Usage in one paragraph</h2>
+  <p>
+    Use the full-color mark on light surfaces with WCAG AA contrast.
+    Mono-white over dark or photographic backgrounds, with a tinted
+    scrim if contrast is unstable. Don't recolor outside the documented
+    palette. Don't apply effects, rotation, or distortion. Always start
+    from the SVG master, never a screenshot. Full guidelines:
+    <a href="https://github.com/weathership/site/tree/main/brand" rel="external">in the brand directory</a>.
+  </p>
+
+  <style>
+    .lede { font-size: 19px; color: var(--ws-storm); max-width: 70ch; }
+    .mk-index { list-style: none; margin: 32px 0; padding: 0; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    .mk-index a {
+      display: block;
+      padding: 20px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 120ms ease;
+    }
+    .mk-index a:hover { border-color: color-mix(in oklab, var(--ws-fog) 40%, var(--ws-storm)); }
+    .mk-index h2 { margin: 0 0 6px; font-size: 18px; }
+    .mk-index p { margin: 0; color: var(--ws-storm); font-size: 14px; }
+    @media (max-width: 720px) { .mk-index { grid-template-columns: 1fr; } }
+  </style>
+</MediaKit>

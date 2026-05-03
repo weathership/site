@@ -1,0 +1,12 @@
+/* weathership color tokens — source of truth.
+ * Edit here; the palette doc and the rendered swatches all read from this file.
+ * See ./palette.md for token roles and contrast pairs. */
+
+:root {
+  --ws-ink:    #0E1726;
+  --ws-paper:  #F7F5EE;
+  --ws-sea:    #1E5F7A;
+  --ws-storm:  #3A4A5E;
+  --ws-sun:    #E8B14A;
+  --ws-fog:    #D6D2C4;
+}

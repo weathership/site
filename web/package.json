@@ -1,0 +1,30 @@
+{
+  "name": "weathership-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "node scripts/sync-brand.mjs",
+    "predev": "node scripts/sync-brand.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "wrangler dev",
+    "deploy": "astro build && wrangler deploy",
+    "typecheck": "astro check && tsc --noEmit"
+  },
+  "dependencies": {
+    "@cloudflare/kumo": "latest",
+    "@phosphor-icons/react": "latest",
+    "hono": "^4",
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@astrojs/react": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "astro": "latest",
+    "typescript": "^5",
+    "wrangler": "latest"
+  }
+}

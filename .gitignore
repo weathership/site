@@ -216,3 +216,31 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# weathership-specific
+web/node_modules/
+web/dist/
+web/.astro/
+web/public/brand/
+web/public/favicon-16.png
+web/public/favicon-32.png
+web/public/favicon.svg
+web/public/apple-touch-icon.png
+web/public/og.png
+.wrangler/
+docs/current/book/
+
+# Python via uv
+.venv/
+uv.lock-temp

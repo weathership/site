@@ -1,0 +1,22 @@
+[book]
+authors = ["Ryan Hill"]
+language = "en"
+src = "src"
+title = "weathership"
+
+[preprocessor.d2]
+path = "d2"
+layout = "elk"
+
+[preprocessor.mermaid]
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+site-url = "/site/"
+additional-css = ["theme/custom.css"]
+git-repository-url = "https://github.com/weathership/site"
+edit-url-template = "https://github.com/weathership/site/edit/main/docs/current/{path}"
+
+[output.html.print]
+enable = true

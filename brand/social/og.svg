@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="weathership — Read the weather. Plan the crossing.">
+  <title>weathership — Read the weather. Plan the crossing.</title>
+  <rect width="1200" height="630" fill="#F7F5EE"/>
+
+  <!-- horizon line spanning the canvas at one-third from bottom -->
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="#D6D2C4" stroke-width="2"/>
+
+  <!-- mark, scaled large, left of center -->
+  <g transform="translate(132, 168) scale(12)">
+    <polygon points="12,2 19,10 5,10" fill="#E8B14A"/>
+    <rect x="3" y="11" width="18" height="2" fill="#1E5F7A"/>
+    <polygon points="5,14 19,14 12,22" fill="#1E5F7A"/>
+  </g>
+
+  <!-- wordmark + tagline, right of mark -->
+  <text x="464" y="296" font-family="Inter, 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="600" font-size="120" fill="#0E1726" letter-spacing="-2.4">weathership</text>
+  <text x="464" y="368" font-family="Inter, 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="36" fill="#3A4A5E" letter-spacing="-0.4">Read the weather. Plan the crossing.</text>
+
+  <!-- footer URL -->
+  <text x="600" y="568" text-anchor="middle" font-family="Inter, 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="22" fill="#3A4A5E" letter-spacing="0.3">weathership.org</text>
+</svg>

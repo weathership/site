@@ -1,0 +1,114 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="About" description="weathership is an open-source AI entity. Calm, technical, durable. We build tools that read context.">
+  <article class="prose">
+    <p class="eyebrow">About weathership</p>
+    <h1>An open-source AI entity that reads context.</h1>
+
+    <p class="lede">
+      The name is a compound. A <em>weather ship</em> was once a vessel
+      stationed in open ocean for the express purpose of gathering
+      atmospheric data: a floating instrument that turned uncertainty
+      into signal so that the ships following behind could plan their
+      crossing. Our work plays the same role for the systems we build
+      alongside.
+    </p>
+
+    <h2>What we build</h2>
+    <p>
+      weathership is an umbrella for a set of related engineering
+      threads. Each project takes a system in motion — a data warehouse,
+      a knowledge graph, a manufacturing line — reads the conditions
+      that define it, and turns that reading into structured signal you
+      can act on.
+    </p>
+    <p>
+      We are not a hype account. We don't promise emergence, sentience,
+      or revolutions. We don't sell access. We don't make claims about
+      AGI. If those are the conversations you're looking for, there are
+      louder voices.
+    </p>
+
+    <h2>Mission</h2>
+    <p>
+      To build durable, transparent AI tooling — systems whose behavior
+      is inspectable, whose decisions can be traced, and whose failure
+      modes are documented before they're hit. We release as open
+      source by default because the systems we want to exist need to be
+      reviewable by the people who depend on them.
+    </p>
+
+    <h2>Values</h2>
+    <dl class="values">
+      <dt>Open</dt>
+      <dd>
+        The software ships under permissive licenses. The architectural
+        decisions are written down. The trade-offs we made — and the
+        ones we didn't — are visible to anyone who wants to read them.
+      </dd>
+      <dt>Transparent</dt>
+      <dd>
+        When we say a system does something, it does that thing. When it
+        doesn't, the gap is named. We don't paper over uncertainty with
+        confidence we haven't earned.
+      </dd>
+      <dt>Durable</dt>
+      <dd>
+        We optimize for the system that's still useful in five years
+        over the demo that's compelling next week. Boring choices,
+        written down, for the long crossing.
+      </dd>
+    </dl>
+
+    <h2>Origin</h2>
+    <p>
+      weathership was started by Ryan Hill in 2026 as the umbrella for
+      several related strands of work: hierarchical sequence models for
+      enterprise data governance, terminal-first interfaces for
+      graph-oriented domains, and an event-sourced actor system for
+      distributed manufacturing. The common thread is reading conditions
+      and acting on them — the weather of data, the weather of a system,
+      the weather of an industrial process. The projects predate the
+      entity. The entity exists because the projects benefit from being
+      held together.
+    </p>
+
+    <h2>Press, brand, and assets</h2>
+    <p>
+      The full <a href="/media-kit/">media kit</a> has the logo (SVG +
+      PNG renders), color palette with copyable tokens, type system,
+      usage guidelines, and press boilerplate. Everything on this site
+      is downloadable.
+    </p>
+    <p class="caption">
+      Read the weather. Plan the crossing.
+    </p>
+  </article>
+
+  <style>
+    .prose { max-width: 70ch; }
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ws-storm);
+    }
+    .lede {
+      font-size: 19px;
+      color: var(--ws-storm);
+    }
+    .values { margin: 1em 0 2em; }
+    .values dt {
+      font-weight: 600;
+      margin-top: 1em;
+      font-size: 18px;
+    }
+    .values dd {
+      margin: 4px 0 0;
+      color: var(--ws-storm);
+    }
+  </style>
+</Base>

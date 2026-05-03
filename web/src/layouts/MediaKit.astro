@@ -1,0 +1,77 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  section: "index" | "logo" | "colors" | "typography" | "press";
+}
+
+const { title, description, section } = Astro.props;
+
+const links = [
+  { id: "index", href: "/media-kit/", label: "Overview" },
+  { id: "logo", href: "/media-kit/logo", label: "Logo" },
+  { id: "colors", href: "/media-kit/colors", label: "Colors" },
+  { id: "typography", href: "/media-kit/typography", label: "Typography" },
+  { id: "press", href: "/media-kit/press", label: "Press" },
+];
+---
+<Base title={`Media kit — ${title}`} description={description}>
+  <div class="mk-layout">
+    <aside class="mk-aside" aria-label="Media kit sections">
+      <p class="caption mk-eyebrow">Media kit</p>
+      <nav>
+        <ul>
+          {links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={l.id === section ? "page" : undefined}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </aside>
+    <article class="mk-body">
+      <slot />
+    </article>
+  </div>
+
+  <style>
+    .mk-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .mk-aside ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .mk-aside a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: var(--ws-radius-sm);
+      color: var(--ws-storm);
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .mk-aside a[aria-current="page"] {
+      background: color-mix(in oklab, var(--ws-sea) 12%, var(--ws-paper));
+      color: var(--ws-sea);
+      font-weight: 600;
+    }
+    .mk-eyebrow {
+      margin: 0 0 12px 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 800px) {
+      .mk-layout { grid-template-columns: 1fr; gap: 24px; }
+      .mk-aside ul { flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</Base>

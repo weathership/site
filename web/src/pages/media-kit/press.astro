@@ -1,0 +1,138 @@
+---
+import MediaKit from "../../layouts/MediaKit.astro";
+import AssetDownload from "../../components/AssetDownload";
+import { SOCIAL_ASSETS } from "../../lib/brand-assets";
+
+const blurb50 = `weathership is an open-source AI entity that builds tools for reading context: hierarchical sequence models for enterprise data governance, terminal-first interfaces for graph-oriented domains, and an event-sourced actor system for distributed manufacturing. Founded in 2026 by Ryan Hill. Open source by default. weathership.org.`;
+
+const blurb100 = `weathership is an open-source AI entity. We build durable, transparent software that reads the conditions of a problem and turns that reading into action — hierarchical sequence models for enterprise data governance, terminal-first interfaces for graph-oriented domains, and event-sourced actor systems for distributed manufacturing. The common thread across our projects is reading the weather of a system: the shape of the data, the state of a process, the signals from a fleet of machines. We release as open source by default because the software we want to exist needs to be reviewable. Founded in 2026 by Ryan Hill. weathership.org.`;
+---
+<MediaKit title="Press" description="Press boilerplate, founder bio, and social cards. Click to copy; download SVG or PNG." section="press">
+  <h1>Press</h1>
+  <p class="lede">
+    Boilerplate copy, founder bio, and social cards. Each block can be
+    copied as written; the social cards are downloadable as both SVG
+    masters and ready-to-post PNG renders.
+  </p>
+
+  <section class="blurbs">
+    <h2>Boilerplate</h2>
+    <article class="blurb">
+      <header><h3>50 words</h3></header>
+      <blockquote>{blurb50}</blockquote>
+    </article>
+    <article class="blurb">
+      <header><h3>100 words</h3></header>
+      <blockquote>{blurb100}</blockquote>
+    </article>
+    <p class="caption">
+      A 250-word version is in <code>brand/press-kit.md</code>; we keep it
+      out of the page above to avoid copy-paste ambiguity in shorter
+      contexts.
+    </p>
+  </section>
+
+  <section class="founder">
+    <h2>Founder</h2>
+    <article>
+      <h3>Ryan Hill — founder</h3>
+      <p>
+        Ryan founded weathership in 2026 to provide a single home for a
+        set of related research and engineering threads: enterprise
+        data governance, graph-oriented data interfaces, and distributed
+        manufacturing systems. Prior work spans applied machine
+        learning, information retrieval, and distributed systems
+        engineering across the financial services and enterprise
+        software industries.
+      </p>
+      <p class="caption">
+        Contact: <a href="mailto:rch@zndx.org">rch@zndx.org</a>
+      </p>
+    </article>
+  </section>
+
+  <section class="contact">
+    <h2>Press contact</h2>
+    <p>
+      For interview requests, media kits, or technical deep-dives:
+      <a href="mailto:press@weathership.org">press@weathership.org</a>.
+    </p>
+    <p class="caption">
+      We typically respond within two business days. For embargoed
+      announcements, please include the desired publication date in the
+      subject line.
+    </p>
+  </section>
+
+  <section class="socials">
+    <h2>Social cards</h2>
+    <div class="social-grid">
+      {SOCIAL_ASSETS.map((s) => (
+        <article class="social-card">
+          <header>
+            <h3>{s.name}</h3>
+            <p class="caption">{s.width} × {s.height} · {s.description}</p>
+          </header>
+          <div class="social-card__preview">
+            <img src={s.svg} alt={s.name} loading="lazy" />
+          </div>
+          <div class="social-card__downloads">
+            <AssetDownload href={s.svg} label="SVG" sublabel="vector" />
+            {s.png && <AssetDownload href={s.png} label="PNG" sublabel={`${s.width}×${s.height}`} />}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <style>
+    .lede { font-size: 19px; color: var(--ws-storm); max-width: 70ch; }
+    section { margin: 48px 0; max-width: 100%; }
+    .blurb { margin-bottom: 24px; }
+    .blurb header h3 { margin: 0 0 8px; font-size: 14px; color: var(--ws-storm); letter-spacing: 0.04em; text-transform: uppercase; }
+    .blurb blockquote {
+      margin: 0;
+      padding: 16px 20px;
+      border-left: 3px solid var(--ws-sea);
+      background: color-mix(in oklab, var(--ws-fog) 30%, var(--ws-paper));
+      border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 75ch;
+    }
+    .founder article {
+      padding: 20px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+      max-width: 70ch;
+    }
+    .founder h3 { margin: 0 0 8px; }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .social-card {
+      padding: 20px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+    }
+    .social-card header h3 { margin: 0; }
+    .social-card__preview {
+      margin: 16px 0;
+      background: color-mix(in oklab, var(--ws-fog) 30%, var(--ws-paper));
+      padding: 16px;
+      border-radius: var(--ws-radius-sm);
+      display: flex;
+      justify-content: center;
+    }
+    .social-card__preview img {
+      max-width: 100%;
+      height: auto;
+      max-height: 260px;
+      display: block;
+    }
+    .social-card__downloads { display: flex; gap: 8px; flex-wrap: wrap; }
+  </style>
+</MediaKit>

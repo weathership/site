@@ -1,0 +1,73 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/current/**"
+      - ".github/workflows/docs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: docs
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mdbook
+        env:
+          MDBOOK_VERSION: "0.4.40"
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install mdbook-mermaid
+        env:
+          MDBOOK_MERMAID_VERSION: "0.14.1"
+        run: |
+          curl -sSL "https://github.com/badboy/mdbook-mermaid/releases/download/v${MDBOOK_MERMAID_VERSION}/mdbook-mermaid-v${MDBOOK_MERMAID_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin"
+
+      - name: Install d2
+        env:
+          D2_VERSION: "0.6.7"
+        run: |
+          curl -sSL "https://github.com/terrastruct/d2/releases/download/v${D2_VERSION}/d2-v${D2_VERSION}-linux-amd64.tar.gz" \
+            | tar -xz -C /tmp
+          install -m 0755 /tmp/d2-v${D2_VERSION}/bin/d2 "$HOME/.local/bin/d2"
+
+      - name: Install mdbook-d2
+        env:
+          MDBOOK_D2_VERSION: "0.3.5"
+        run: |
+          curl -sSL "https://github.com/danieleades/mdbook-d2/releases/download/v${MDBOOK_D2_VERSION}/mdbook-d2-v${MDBOOK_D2_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin" || true
+
+      - name: Build book
+        run: mdbook build docs/current
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/current/book
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

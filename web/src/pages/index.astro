@@ -1,0 +1,158 @@
+---
+import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const news = (await getCollection("news"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+<Base>
+  <section class="hero">
+    <p class="hero__eyebrow">An open-source AI entity</p>
+    <h1 class="hero__title">Read the weather.<br/>Plan the crossing.</h1>
+    <p class="hero__lede">
+      weathership builds durable, transparent software that reads the
+      conditions of a problem and turns that reading into action — across
+      enterprise data governance, graph-oriented data exploration, and
+      distributed manufacturing.
+    </p>
+    <div class="hero__cta">
+      <a class="button" href="/projects/">See the projects</a>
+      <a class="button button--ghost" href="/about">What we are</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="section__head">
+      <h2>Projects</h2>
+      <a class="section__link" href="/projects/">All projects →</a>
+    </header>
+    <div class="proj-grid">
+      {projects.map((p) => (
+        <a class={`proj-card proj-card--${p.data.visibility}`} href={`/projects/${p.id}/`}>
+          <div class="proj-card__head">
+            <h3>{p.data.name}</h3>
+            <span class={`tag tag--${p.data.status === 'stealth' ? 'stealth' : p.data.status === 'active' ? 'accent' : ''}`}>{p.data.status}</span>
+          </div>
+          <p>{p.data.tagline}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <header class="section__head">
+      <h2>Latest</h2>
+      <a class="section__link" href="/news/">All news →</a>
+    </header>
+    <ul class="news-list">
+      {news.map((n) => (
+        <li>
+          <a href={`/news/${n.id}/`}>
+            <span class="news-list__date">{n.data.date.toISOString().slice(0, 10)}</span>
+            <span class="news-list__title">{n.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <style>
+    .hero {
+      padding: 24px 0 32px;
+      max-width: 760px;
+    }
+    .hero__eyebrow {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ws-storm);
+    }
+    .hero__title {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 56px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--ws-ink);
+    }
+    .hero__lede {
+      margin: 24px 0 32px;
+      font-size: 19px;
+      color: var(--ws-storm);
+      max-width: 60ch;
+    }
+    .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .section { margin-top: 72px; }
+    .section__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section__head h2 { margin: 0; }
+    .section__link { font-size: 14px; }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .proj-card {
+      display: block;
+      padding: 20px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+      background: var(--ws-paper);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 120ms ease, transform 120ms ease;
+    }
+    .proj-card:hover {
+      border-color: color-mix(in oklab, var(--ws-fog) 40%, var(--ws-storm));
+      transform: translateY(-1px);
+    }
+    .proj-card--stealth {
+      background: color-mix(in oklab, var(--ws-ink) 96%, var(--ws-storm));
+      color: var(--ws-paper);
+      border-color: var(--ws-storm);
+    }
+    .proj-card--stealth:hover {
+      border-color: var(--ws-fog);
+    }
+    .proj-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .proj-card h3 { margin: 0; font-size: 17px; }
+    .proj-card p { margin: 0; font-size: 14px; color: inherit; opacity: 0.85; }
+
+    .news-list { list-style: none; margin: 0; padding: 0; }
+    .news-list li { border-top: 1px solid var(--ws-fog); }
+    .news-list li:last-child { border-bottom: 1px solid var(--ws-fog); }
+    .news-list a {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 14px 0;
+      color: inherit;
+      text-decoration: none;
+    }
+    .news-list a:hover .news-list__title { color: var(--ws-sea); }
+    .news-list__date { color: var(--ws-storm); font-family: var(--ws-font-mono); font-size: 13px; }
+    .news-list__title { font-weight: 500; }
+
+    @media (max-width: 720px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .news-list a { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</Base>

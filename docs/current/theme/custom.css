@@ -1,0 +1,24 @@
+/* weathership mdbook theme overrides — sync with brand tokens. */
+
+:root {
+  --ws-ink:    #0E1726;
+  --ws-paper:  #F7F5EE;
+  --ws-sea:    #1E5F7A;
+  --ws-storm:  #3A4A5E;
+  --ws-sun:    #E8B14A;
+  --ws-fog:    #D6D2C4;
+}
+
+.light {
+  --bg: var(--ws-paper);
+  --fg: var(--ws-ink);
+  --sidebar-bg: color-mix(in oklab, var(--ws-fog) 30%, var(--ws-paper));
+  --sidebar-fg: var(--ws-ink);
+  --sidebar-active: var(--ws-sea);
+  --links: var(--ws-sea);
+  --quote-bg: color-mix(in oklab, var(--ws-fog) 30%, var(--ws-paper));
+  --quote-border: var(--ws-fog);
+  --table-border-color: var(--ws-fog);
+}
+
+.menu-title { font-weight: 600; }

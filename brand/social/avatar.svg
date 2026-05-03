@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="weathership">
+  <title>weathership</title>
+  <rect width="400" height="400" fill="#0E1726"/>
+  <g transform="translate(80, 80) scale(10)">
+    <polygon points="12,2 19,10 5,10" fill="#E8B14A"/>
+    <rect x="3" y="11" width="18" height="2" fill="#F7F5EE"/>
+    <polygon points="5,14 19,14 12,22" fill="#F7F5EE"/>
+  </g>
+</svg>

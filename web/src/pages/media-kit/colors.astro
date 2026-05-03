@@ -1,0 +1,61 @@
+---
+import MediaKit from "../../layouts/MediaKit.astro";
+import ColorSwatch from "../../components/ColorSwatch";
+import { COLOR_TOKENS } from "../../lib/brand-assets";
+---
+<MediaKit title="Colors" description="weathership color palette — six tokens with hex, RGB, HSL, and click-to-copy." section="colors">
+  <h1>Colors</h1>
+  <p class="lede">
+    Six tokens, each with a clear role. Click any value to copy. The
+    rendered swatches read from <code>brand/colors/tokens.css</code> —
+    edit there and the site reflects the change.
+  </p>
+
+  <div class="swatches">
+    {COLOR_TOKENS.map((t) => (
+      <ColorSwatch client:load name={t.name} role={t.role} hex={t.hex} rgb={t.rgb} hsl={t.hsl} />
+    ))}
+  </div>
+
+  <section class="downloads">
+    <h2>Downloads</h2>
+    <p>
+      <a href="/brand/colors/tokens.css" download>tokens.css</a> — drop into any CSS pipeline; declares <code>:root</code> custom properties for all six tokens.
+    </p>
+  </section>
+
+  <section class="usage">
+    <h2>Usage</h2>
+    <p>
+      <strong>Body text</strong> on light surfaces is <code>--ws-ink</code>,
+      not pure black. Pure black reads as harsher than the rest of the
+      system.
+    </p>
+    <p>
+      <strong>Accent</strong> (<code>--ws-sea</code>) is for one purpose
+      at a time on any given surface. If everything is highlighted,
+      nothing is.
+    </p>
+    <p>
+      <strong>Sun</strong> (<code>--ws-sun</code>) is for shapes and
+      illustrations, not type — it's a 1.5:1 contrast against paper, well
+      below WCAG body-text targets. Use it on the sail of the mark, in
+      illustrations, in deliberate emphasis blocks; never as a link or
+      body color.
+    </p>
+  </section>
+
+  <style>
+    .lede { font-size: 19px; color: var(--ws-storm); max-width: 70ch; }
+    .swatches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0 56px;
+    }
+    .downloads, .usage { margin-top: 40px; max-width: 70ch; }
+    @media (max-width: 800px) {
+      .swatches { grid-template-columns: 1fr; }
+    }
+  </style>
+</MediaKit>

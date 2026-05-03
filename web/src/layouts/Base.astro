@@ -1,0 +1,135 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "weathership",
+  description = "weathership — open-source AI tools that read context. Read the weather. Plan the crossing.",
+  ogImage = "/og.png",
+} = Astro.props;
+
+const fullTitle = title === "weathership" ? title : `${title} — weathership`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership.zndx.org").toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site ?? "https://weathership.zndx.org").toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell site-header__inner">
+        <a class="site-header__brand" href="/">
+          <img src="/brand/logo/mark/mark.svg" alt="" width="28" height="28" />
+          <span class="site-header__wordmark">weathership</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/about">About</a>
+          <a href="/news/">News</a>
+          <a href="/projects/">Projects</a>
+          <a href="/media-kit/">Media kit</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell site-footer__inner">
+        <a class="site-footer__brand" href="/">
+          <img src="/brand/logo/mark/mark.svg" alt="" width="22" height="22" />
+          <span>weathership</span>
+        </a>
+        <p class="caption">Open source by default. Read the weather. Plan the crossing.</p>
+        <p class="caption">
+          <a href="/media-kit/">Media kit</a> · <a href="https://github.com/weathership">GitHub</a> · <a href="mailto:rch@zndx.org">Contact</a>
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        border-bottom: 1px solid var(--ws-fog);
+        background: var(--ws-paper);
+      }
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        gap: 24px;
+      }
+      .site-header__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ws-ink);
+        text-decoration: none;
+      }
+      .site-header__wordmark {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .site-nav {
+        display: flex;
+        gap: 22px;
+        font-size: 15px;
+      }
+      .site-nav a {
+        color: var(--ws-storm);
+        text-decoration: none;
+      }
+      .site-nav a:hover {
+        color: var(--ws-ink);
+      }
+      .site-main {
+        padding: 56px 0 96px;
+      }
+      .site-footer {
+        border-top: 1px solid var(--ws-fog);
+        padding: 32px 0 56px;
+      }
+      .site-footer__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .site-footer__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ws-ink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      @media (max-width: 640px) {
+        .site-header__inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+        .site-nav { flex-wrap: wrap; }
+      }
+    </style>
+  </body>
+</html>

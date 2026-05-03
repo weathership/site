@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" width="800" height="720" role="img" aria-label="weathership type specimens">
+  <title>weathership type specimens</title>
+  <style>
+    .label { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; fill: #3A4A5E; letter-spacing: 0.04em; }
+    .sans { font-family: Inter, 'Inter Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; fill: #0E1726; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: #0E1726; }
+  </style>
+  <rect width="800" height="720" fill="#F7F5EE"/>
+
+  <!-- Display 56 / 600 -->
+  <text x="32" y="60" class="label">DISPLAY · INTER 600 · 56 / 1.05</text>
+  <text x="32" y="116" class="sans" font-size="56" font-weight="600" letter-spacing="-1.1">Read the weather.</text>
+
+  <!-- H1 40 / 600 -->
+  <text x="32" y="174" class="label">H1 · INTER 600 · 40 / 1.15</text>
+  <text x="32" y="220" class="sans" font-size="40" font-weight="600" letter-spacing="-0.6">Hierarchical sequence modeling</text>
+
+  <!-- H2 28 / 600 -->
+  <text x="32" y="266" class="label">H2 · INTER 600 · 28 / 1.2</text>
+  <text x="32" y="304" class="sans" font-size="28" font-weight="600" letter-spacing="-0.28">Process separation, validated empirically</text>
+
+  <!-- H3 20 / 600 -->
+  <text x="32" y="346" class="label">H3 · INTER 600 · 20 / 1.3</text>
+  <text x="32" y="378" class="sans" font-size="20" font-weight="600" letter-spacing="-0.1">A 19×19 grid for graph-oriented data</text>
+
+  <!-- Body 17 / 400 -->
+  <text x="32" y="416" class="label">BODY · INTER 400 · 17 / 1.6</text>
+  <text x="32" y="446" class="sans" font-size="17" font-weight="400">The system reads telemetry from 10,000 simulated machines and applies a state</text>
+  <text x="32" y="472" class="sans" font-size="17" font-weight="400">machine to each event. Sustained throughput is 56,000 events per second.</text>
+
+  <!-- Body small 14 / 400 -->
+  <text x="32" y="510" class="label">BODY SMALL · INTER 400 · 14 / 1.55</text>
+  <text x="32" y="538" class="sans" font-size="14" font-weight="400">Recovery throughput is 4,347 entities per second; 100 equipment recover in 23 ms.</text>
+
+  <!-- Caption 13 / 500 -->
+  <text x="32" y="570" class="label">CAPTION · INTER 500 · 13 / 1.4 · 0.01em</text>
+  <text x="32" y="594" class="sans" font-size="13" font-weight="500" letter-spacing="0.13">Figure 3 — Round-trip latency by message size, log–log scale</text>
+
+  <!-- Code 14 / 400 -->
+  <text x="32" y="624" class="label">CODE · JETBRAINS MONO 400 · 14 / 1.6</text>
+  <text x="32" y="652" class="mono" font-size="14" font-weight="400">aeron::concurrent::AtomicBuffer buffer{1024};</text>
+  <text x="32" y="676" class="mono" font-size="14" font-weight="400">publication-&gt;offer(buffer, 0, message.size());</text>
+
+  <!-- footer mark-only at bottom right -->
+  <g transform="translate(744, 668) scale(2)">
+    <polygon points="12,2 19,10 5,10" fill="#E8B14A"/>
+    <rect x="3" y="11" width="18" height="2" fill="#1E5F7A"/>
+    <polygon points="5,14 19,14 12,22" fill="#1E5F7A"/>
+  </g>
+</svg>

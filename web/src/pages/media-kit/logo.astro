@@ -1,0 +1,44 @@
+---
+import MediaKit from "../../layouts/MediaKit.astro";
+import LogoVariantGrid from "../../components/LogoVariantGrid";
+import { LOGO_GROUPS } from "../../lib/brand-assets";
+---
+<MediaKit title="Logo" description="weathership logo variants — mark, wordmark, lockups — with downloadable SVG and PNG renders." section="logo">
+  <h1>Logo</h1>
+  <p class="lede">
+    Three shapes — mark, wordmark, lockup — each with a small set of
+    variants. The full-color mark is the primary form. Mono variants
+    cover print and dark-surface contexts.
+  </p>
+
+  {LOGO_GROUPS.map((group) => (
+    <section class="grp">
+      <header class="grp__head">
+        <h2>{group.title}</h2>
+        <p>{group.blurb}</p>
+      </header>
+      <LogoVariantGrid client:load variants={group.variants} />
+    </section>
+  ))}
+
+  <section class="grp">
+    <h2>Safe area & minimum size</h2>
+    <p>Minimum clear space around any logo: <strong>one cap-height of the wordmark</strong> on every side. For the mark alone, use the height of the waterline stroke as the unit.</p>
+    <p>Minimum sizes:</p>
+    <ul>
+      <li><strong>Mark only</strong> — 6 mm in print, 16 px on screen.</li>
+      <li><strong>Wordmark</strong> — 18 mm in print, 80 px on screen.</li>
+      <li><strong>Horizontal lockup</strong> — 24 mm in print, 120 px on screen.</li>
+      <li><strong>Stacked lockup</strong> — 18 mm in print, 96 px on screen.</li>
+    </ul>
+    <p>Below these sizes, switch to a smaller variant or omit the logo.</p>
+  </section>
+
+  <style>
+    .lede { font-size: 19px; color: var(--ws-storm); max-width: 70ch; }
+    .grp { margin: 56px 0; }
+    .grp__head { margin-bottom: 20px; max-width: 70ch; }
+    .grp__head h2 { margin: 0 0 8px; }
+    .grp__head p { margin: 0; color: var(--ws-storm); }
+  </style>
+</MediaKit>

@@ -1,0 +1,124 @@
+/* weathership site styles. Imports brand tokens (single source of truth)
+ * and the kumo component library, then layers on layout primitives. */
+
+@import "../../../brand/colors/tokens.css";
+@import "@cloudflare/kumo/styles";
+
+:root {
+  --ws-font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ws-font-mono: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace,
+    SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --ws-radius-sm: 4px;
+  --ws-radius-md: 8px;
+  --ws-radius-lg: 16px;
+
+  --ws-shell-max: 1040px;
+  --ws-shell-pad: clamp(20px, 4vw, 48px);
+}
+
+html, body {
+  margin: 0;
+  background: var(--ws-paper);
+  color: var(--ws-ink);
+  font-family: var(--ws-font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+a {
+  color: var(--ws-sea);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+code, pre, kbd, samp {
+  font-family: var(--ws-font-mono);
+  font-size: 0.92em;
+}
+
+pre {
+  background: color-mix(in oklab, var(--ws-fog) 50%, var(--ws-paper));
+  border: 1px solid var(--ws-fog);
+  border-radius: var(--ws-radius-sm);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 1.4em 0 0.4em;
+}
+h1 { font-size: 40px; letter-spacing: -0.015em; line-height: 1.15; }
+h2 { font-size: 28px; }
+h3 { font-size: 20px; letter-spacing: -0.005em; }
+
+p { margin: 0 0 1.2em; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--ws-fog);
+  margin: 3em 0;
+}
+
+.shell {
+  max-width: var(--ws-shell-max);
+  margin: 0 auto;
+  padding: 0 var(--ws-shell-pad);
+}
+
+.muted { color: var(--ws-storm); }
+.caption { font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--ws-storm); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--ws-fog) 70%, var(--ws-paper));
+  color: var(--ws-storm);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tag--accent {
+  background: color-mix(in oklab, var(--ws-sea) 14%, var(--ws-paper));
+  color: var(--ws-sea);
+}
+
+.tag--stealth {
+  background: var(--ws-ink);
+  color: var(--ws-paper);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--ws-radius-sm);
+  background: var(--ws-sea);
+  color: var(--ws-paper);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--ws-sea);
+  transition: background 120ms ease;
+}
+.button:hover { background: color-mix(in oklab, var(--ws-sea) 88%, black); }
+.button--ghost {
+  background: transparent;
+  color: var(--ws-ink);
+  border-color: var(--ws-fog);
+}
+.button--ghost:hover { background: var(--ws-fog); }
