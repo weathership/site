@@ -88,12 +88,12 @@ inside `web/`.
   does `@import "../../../brand/colors/tokens.css"`. If you add a
   new color, add it once in `brand/colors/tokens.css` and update
   `brand/colors/palette.md` and `web/src/lib/brand-assets.ts:COLOR_TOKENS`.
-- **The `stealth` project pattern.** `web/src/content/projects/stealth.md`
-  uses `visibility: stealth` and intentionally has no `repo` or
-  `docs` URL. The card renders muted on `/projects/`. When the
-  underlying project (CAF/Kudu/Aeron — currently at
-  `github.com/rch/asf-kudu/tree/rch/devenv/examples/caf`) gets a
-  name and its own repo, swap visibility to `public` and add `repo`.
+- **The `stealth` project pattern is supported but currently unused.**
+  A project with `visibility: stealth` and no `repo`/`docs` renders
+  muted on `/projects/` with an "in stealth — contact for details"
+  affordance. Reach (formerly the stealth slot) graduated to a public
+  repo at `github.com/weathership/reach`; future stealth projects can
+  reuse the pattern by following the same shape.
 - **Behave hits the deployed URL.** Tests are not unit tests of TS
   modules — they're acceptance tests against a serving target. Run
   `just web-preview` (or deploy and hit prod) before `just behave`.

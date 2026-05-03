@@ -1,18 +1,17 @@
 ---
-name: "(stealth)"
+name: "Reach"
 tagline: "Event-sourced actor system for distributed manufacturing."
-status: "stealth"
-visibility: "stealth"
+status: "active"
+repo: "https://github.com/weathership/reach"
+visibility: "public"
 order: 3
-summary: "Process-separated architecture using Apache Kudu for event persistence and Aeron IPC for sub-microsecond inter-process messaging. In stealth — contact for details."
+summary: "Process-separated architecture using Apache Kudu for event persistence and Aeron IPC for sub-microsecond inter-process messaging."
 ---
 
-In stealth.
-
-The working code is an event-sourced actor system for Industry 4.0
-manufacturing — a process-separated architecture using Apache Kudu for
-event persistence and Aeron IPC for sub-microsecond inter-process
-messaging.
+Reach is an event-sourced actor system for Industry 4.0 manufacturing —
+a process-separated architecture using the C++ Actor Framework, Apache
+Kudu for event persistence, and Aeron IPC for sub-microsecond
+inter-process messaging.
 
 The architecture validates a specific claim: that fault isolation and
 ultra-low-latency IPC together outperform monolithic integration at
@@ -30,7 +29,8 @@ Current numbers, reproducible on commodity hardware:
 - **Telemetry capacity:** 56,000 events / second across 10,000
   simulated machines
 
-The project doesn't yet have a name or its own repository. We'll publish
-both when the rest of the surface is ready.
-
-Contact: [rch@zndx.org](mailto:rch@zndx.org).
+The name comes from the nautical sense — a stretch of navigable water
+between two points — and the everyday sense of extending across
+distance. Both fit: the system extends a coherent event log across
+machines, processes, and sites without losing the timing guarantees
+each layer needs.

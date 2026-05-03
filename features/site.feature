@@ -33,7 +33,7 @@ Feature: weathership site smoke tests
     Then the response status is 200
     And the response body contains "Aegir"
     And the response body contains "Gaius"
-    And the response body contains "stealth"
+    And the response body contains "Reach"
 
   Scenario: Media-kit overview links to subpages
     When I GET "/media-kit/"
