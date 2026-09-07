@@ -88,6 +88,11 @@ inside `web/`.
   does `@import "../../../brand/colors/tokens.css"`. If you add a
   new color, add it once in `brand/colors/tokens.css` and update
   `brand/colors/palette.md` and `web/src/lib/brand-assets.ts:COLOR_TOKENS`.
+- **Integrations** (`web/src/data/integrations/`, `/integrations/`)
+  mirrors Projects (same card + article layout) and is **nav-only** —
+  not a landing section. Lead order: Metabase, Metaflow, Marquez,
+  Hermes, Miro (`preview`). Metabase is AGPL and stays out of the
+  Signals tree.
 - **Project surfacing is gated by `status`.** The landing card grid
   shows at most six `status: active` projects (Nautilus is the
   full-width band instead of a card; SDG strategy and Kvasir are

@@ -39,4 +39,18 @@ const methods = defineCollection({
   }),
 });
 
-export const collections = { news, projects, methods };
+const integrations = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/integrations" }),
+  schema: z.object({
+    name: z.string(),
+    tagline: z.string(),
+    status: z.enum(["active", "preview", "stealth", "archived"]),
+    repo: z.string().url().optional(),
+    docs: z.string().url().optional(),
+    visibility: z.enum(["public", "private", "stealth"]).default("public"),
+    order: z.number().default(0),
+    summary: z.string(),
+  }),
+});
+
+export const collections = { news, projects, methods, integrations };

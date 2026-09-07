@@ -77,6 +77,27 @@ Feature: weathership site smoke tests
     And the response body contains "Marquez"
     And the response body contains "impala_fdw"
 
+  Scenario: Integrations index lists Metabase first and the rest of the set
+    When I GET "/integrations/"
+    Then the response status is 200
+    And the response body contains "Metabase"
+    And the response body contains "Metaflow"
+    And the response body contains "Marquez"
+    And the response body contains "Hermes"
+    And the response body contains "Miro"
+
+  Scenario: Metabase integration page renders
+    When I GET "/integrations/metabase/"
+    Then the response status is 200
+    And the response body contains "dashboard"
+    And the response body contains "agpl-metabase"
+
+  Scenario: Miro integration page is preview
+    When I GET "/integrations/miro/"
+    Then the response status is 200
+    And the response body contains "mcp.miro.com"
+    And the response body contains "preview"
+
   Scenario: Media-kit overview links to subpages
     When I GET "/media-kit/"
     Then the response status is 200

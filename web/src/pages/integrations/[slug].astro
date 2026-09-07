@@ -1,0 +1,56 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const integrations = await getCollection("integrations");
+  return integrations.map((p) => ({
+    params: { slug: p.id },
+    props: { integration: p },
+  }));
+}
+
+const { integration } = Astro.props;
+const { Content } = await render(integration);
+---
+<Base title={integration.data.name} description={integration.data.summary}>
+  <article class={`proj proj--${integration.data.visibility}`}>
+    <header>
+      <p class="eyebrow"><a href="/integrations/">Integrations</a></p>
+      <div class="proj__head">
+        <h1>{integration.data.name}</h1>
+        <span class={`tag tag--${integration.data.status === 'active' ? 'accent' : integration.data.status}`}>{integration.data.status}</span>
+      </div>
+      <p class="proj__tagline">{integration.data.tagline}</p>
+      <div class="proj__links">
+        {integration.data.repo && <a href={integration.data.repo}>GitHub</a>}
+        {integration.data.docs && <a href={integration.data.docs}>Documentation</a>}
+      </div>
+    </header>
+    <div class="proj__body">
+      <Content />
+    </div>
+  </article>
+  <style>
+    .proj { max-width: 70ch; }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ws-storm);
+      margin: 0 0 12px;
+    }
+    .eyebrow a { color: inherit; }
+    .proj__head { display: flex; align-items: center; gap: 16px; margin-top: 0; }
+    .proj__head h1 { margin: 0; }
+    .proj__tagline { font-size: 19px; color: var(--ws-storm); margin: 6px 0 16px; }
+    .proj__links { display: flex; gap: 24px; margin-bottom: 32px; font-size: 14px; }
+    .proj__body { font-size: 17px; line-height: 1.7; }
+    .proj__body p { margin: 1.1em 0; }
+    .proj__body ol { padding-left: 1.4em; }
+    .proj__body ol li { margin-bottom: 0.6em; }
+    .proj__body ul { padding-left: 1.4em; }
+    .proj__body h2 { margin: 1.6em 0 0.5em; font-size: 1.25em; }
+  </style>
+</Base>
