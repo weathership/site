@@ -54,6 +54,7 @@ Feature: weathership site smoke tests
     And the response body contains "Gaius"
     And the response body contains "Reach"
     And the response body does not contain "Vigil"
+    And the response body does not contain "SDG strategy"
 
   Scenario: Nautilus project page renders
     When I GET "/projects/nautilus/"

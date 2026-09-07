@@ -4,8 +4,9 @@ import { getCollection } from "astro:content";
 
 const nautilus = (await getCollection("projects")).find((p) => p.id === "nautilus");
 const projects = (await getCollection("projects"))
-  .filter((p) => p.data.status === "active" && p.id !== "nautilus")
-  .sort((a, b) => a.data.order - b.data.order);
+  .filter((p) => p.data.status === "active" && p.id !== "nautilus" && p.id !== "sdg-strategy")
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 6);
 const projectMap = new Map(
   (await getCollection("projects")).map((p) => [p.id, p])
 );

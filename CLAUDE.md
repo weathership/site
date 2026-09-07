@@ -88,16 +88,17 @@ inside `web/`.
   does `@import "../../../brand/colors/tokens.css"`. If you add a
   new color, add it once in `brand/colors/tokens.css` and update
   `brand/colors/palette.md` and `web/src/lib/brand-assets.ts:COLOR_TOKENS`.
-- **Project surfacing is gated by `status`.** All `status: active`
-  projects appear on the landing page; the `/projects/` index shows
-  every status. Use `status: preview` for projects that have a public
-  repo but aren't yet ready for landing-page promotion (Vigil follows
-  this pattern — repo is live, README is in flux). Use
-  `visibility: stealth` (with no `repo`/`docs`) for projects we want
-  to hint at without naming; the card renders muted on `/projects/`.
-  Currently no project uses `visibility: stealth` — Reach graduated
-  out of it. Signals is order 1 and is the foundation the rest of
-  the copy assumes.
+- **Project surfacing is gated by `status`.** The landing card grid
+  shows at most six `status: active` projects (Nautilus is the
+  full-width band instead of a card; SDG strategy is all-projects
+  only). The `/projects/` index shows every status. Use
+  `status: preview` for projects that have a public repo but aren't
+  yet ready for landing-page promotion (Vigil follows this pattern —
+  repo is live, README is in flux). Use `visibility: stealth` (with
+  no `repo`/`docs`) for projects we want to hint at without naming;
+  the card renders muted on `/projects/`. Currently no project uses
+  `visibility: stealth` — Reach graduated out of it. Signals is
+  order 1 and is the foundation the rest of the copy assumes.
 - **Behave hits the deployed URL.** Tests are not unit tests of TS
   modules — they're acceptance tests against a serving target. Run
   `just web-preview` (or deploy and hit prod) before `just behave`.
