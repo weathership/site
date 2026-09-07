@@ -44,7 +44,7 @@ const news = (await getCollection("news"))
             <p class="nautilus-band__lede">{nautilus.data.tagline}</p>
             <p class="nautilus-band__body">{nautilus.data.summary}</p>
             <div class="nautilus-band__cta">
-              <a class="button" href={`/projects/${nautilus.id}/`}>Project</a>
+              <a class="button" href={`/projects/${nautilus.id}/`}>Overview</a>
               {nautilus.data.repo && (
                 <a class="button button--ghost nautilus-band__ghost" href={nautilus.data.repo}>GitHub</a>
               )}

@@ -1,6 +1,6 @@
 ---
 name: "Nautilus"
-tagline: "Deterministic supervisor for federated engine stacks."
+tagline: "Deterministic supervisor for federated workspaces."
 status: "active"
 repo: "https://github.com/weathership/nautilus"
 visibility: "public"
