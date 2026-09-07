@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "weathership",
-  description = "weathership — open-source AI tools that read context. we who saw the deep.",
+  description = "weathership builds Signals, the federated foundation for independent engines, agents, and data products — plus the engines that attach to it.",
   ogImage = "/og.png",
 } = Astro.props;
 
@@ -48,6 +48,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
           <a href="/about">About</a>
           <a href="/news/">News</a>
           <a href="/projects/">Projects</a>
+          <a href="/methods/">Methods</a>
           <a href="/media-kit/">Media kit</a>
         </nav>
       </div>
@@ -63,9 +64,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://weathership
           <img src="/brand/logo/mark/mark.svg" alt="" width="22" height="22" />
           <span class="site-footer__wordmark">weathership</span>
         </a>
-        <p class="caption">we who saw the deep.</p>
         <p class="caption">
-          <a href="/media-kit/">Media kit</a> · <a href="https://github.com/weathership">GitHub</a> · <a href="https://weathership.substack.com">Substack</a> · <a href="mailto:rch@zndx.org">Contact</a>
+          <a href="/media-kit/">Media kit</a> · <a href="https://github.com/weathership">GitHub</a> · <a href="https://huggingface.co/zndx">Hugging Face</a> · <a href="https://weathership.substack.com">Substack</a> · <a href="mailto:hello@weathership.org">Contact</a>
         </p>
       </div>
     </footer>

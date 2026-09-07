@@ -6,12 +6,12 @@ const posts = (await getCollection("news"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base title="News" description="weathership news, releases, and notes from the road.">
+<Base title="News" description="weathership news and releases.">
   <header class="news-header">
     <p class="eyebrow">News</p>
-    <h1>What we're shipping, what we're thinking, and what's next.</h1>
+    <h1>News</h1>
     <p class="subscribe">
-      Longer-form essays and announcements arrive on our
+      Longer essays also appear on
       <a href="https://weathership.substack.com" rel="external">Substack</a>.
     </p>
   </header>

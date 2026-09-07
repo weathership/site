@@ -6,15 +6,15 @@ const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order
 );
 ---
-<Base title="Projects" description="weathership's open-source projects span enterprise data governance, graph-oriented exploration, distributed manufacturing, and a global compute fabric.">
+<Base title="Projects" description="Signals is the weathership foundation. Gaius, Ægir, Atelier, Reach, and Vigil attach over signals-protocol.">
   <header class="proj-header">
     <p class="eyebrow">Projects</p>
-    <h1>Different systems, same shape.</h1>
+    <h1>Projects</h1>
     <p class="lede">
-      Each project reads the conditions of a different system —
-      relational data, graph-oriented data, manufacturing telemetry,
-      and the compute fabric that federates them — and turns that
-      reading into structured signal.
+      Signals is the hub. The other projects are engines and systems
+      that attach to it over signals-protocol — cognition, instruct,
+      referee, manufacturing telemetry, and a resource-oriented compute
+      fabric.
     </p>
   </header>
 
@@ -29,9 +29,9 @@ const projects = (await getCollection("projects")).sort(
           <p class="proj-row__tagline">{p.data.tagline}</p>
           <p class="proj-row__summary">{p.data.summary}</p>
           <div class="proj-row__links">
-            {p.data.repo && <span class="link">github →</span>}
-            {p.data.docs && <span class="link">docs →</span>}
-            {!p.data.repo && !p.data.docs && p.data.visibility === 'stealth' && <span class="link">in stealth — contact for details</span>}
+            {p.data.repo && <span class="link">GitHub</span>}
+            {p.data.docs && <span class="link">Documentation</span>}
+            {!p.data.repo && !p.data.docs && p.data.visibility === 'stealth' && <span class="link">Private — enquire</span>}
           </div>
         </a>
       </li>

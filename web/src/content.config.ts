@@ -27,4 +27,16 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { news, projects };
+const methods = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/methods" }),
+  schema: z.object({
+    name: z.string(),
+    tagline: z.string(),
+    summary: z.string(),
+    projects: z.array(z.string()).default([]),
+    status: z.enum(["stub", "documented", "published"]).default("documented"),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { news, projects, methods };

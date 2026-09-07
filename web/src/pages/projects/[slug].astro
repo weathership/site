@@ -23,8 +23,8 @@ const { Content } = await render(project);
       </div>
       <p class="proj__tagline">{project.data.tagline}</p>
       <div class="proj__links">
-        {project.data.repo && <a href={project.data.repo}>repository →</a>}
-        {project.data.docs && <a href={project.data.docs}>documentation →</a>}
+        {project.data.repo && <a href={project.data.repo}>GitHub</a>}
+        {project.data.docs && <a href={project.data.docs}>Documentation</a>}
       </div>
     </header>
     <div class="proj__body">

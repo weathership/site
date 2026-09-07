@@ -21,7 +21,7 @@ Feature: weathership site smoke tests
   Scenario: About page renders
     When I GET "/about"
     Then the response status is 200
-    And the response body contains "open-source AI entity"
+    And the response body contains "Signals is the foundation"
 
   Scenario: News index lists the launch post
     When I GET "/news/"
@@ -31,6 +31,7 @@ Feature: weathership site smoke tests
   Scenario: Projects index lists every project including preview entries
     When I GET "/projects/"
     Then the response status is 200
+    And the response body contains "Signals"
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"
@@ -39,6 +40,7 @@ Feature: weathership site smoke tests
   Scenario: Landing page surfaces only active projects
     When I GET "/"
     Then the response status is 200
+    And the response body contains "Signals"
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"

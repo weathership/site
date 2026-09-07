@@ -1,9 +1,9 @@
 # Introduction
 
 This is the engineering documentation for the weathership.org site
-repository: the public web presence and brand package for weathership,
-an open-source AI entity. It complements — and does not replace — the
-public site at <https://weathership.zndx.org>.
+repository: the public web presence and brand package for weathership.
+It complements — and does not replace — the public site at
+<https://weathership.zndx.org>.
 
 ## What's in this repo
 

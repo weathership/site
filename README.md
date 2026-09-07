@@ -1,7 +1,7 @@
 # site
 
-Public web presence and brand package for **weathership.org**, an
-open-source AI entity.
+Public web presence and brand package for **weathership.org**.
+Signals is the federated foundation the site describes.
 
 ## Layout
 

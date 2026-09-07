@@ -1,0 +1,107 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const methods = (await getCollection("methods")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+const projects = await getCollection("projects");
+const projectMap = new Map(projects.map((p) => [p.id, p]));
+---
+<Base title="Methods" description="Methods used across the weathership lattice — fusion rules, models, verification, linked to the projects that implement them.">
+  <header class="meth-header">
+    <p class="eyebrow">Methods</p>
+    <h1>Methods</h1>
+    <p class="lede">
+      Fusion rules, sequence models, verification, and operational
+      loops, written at the precision of the papers they cite. Each
+      page names the project that implements the method and links to
+      that project's documentation.
+    </p>
+  </header>
+
+  <ul class="meth-list">
+    {methods.map((m) => {
+      const linked = m.data.projects
+        .map((slug) => projectMap.get(slug))
+        .filter(Boolean);
+      return (
+        <li class="meth-row">
+          <a href={`/methods/${m.id}/`}>
+            <header>
+              <h2>{m.data.name}</h2>
+              {m.data.status !== "documented" && (
+                <span class={`tag tag--${m.data.status}`}>{m.data.status}</span>
+              )}
+            </header>
+            <p class="meth-row__tagline">{m.data.tagline}</p>
+            <p class="meth-row__summary">{m.data.summary}</p>
+            <div class="meth-row__projects">
+              <span class="meth-row__label">implemented in</span>
+              {linked.map((p, i) => (
+                <>
+                  {i > 0 && <span class="meth-row__sep">·</span>}
+                  <span class="meth-row__project">{p.data.name}</span>
+                </>
+              ))}
+            </div>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+
+  <style>
+    .meth-header { max-width: 70ch; margin-bottom: 56px; }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ws-storm);
+      margin: 0 0 12px;
+    }
+    .lede { font-size: 19px; color: var(--ws-storm); }
+
+    .meth-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+    .meth-row a {
+      display: block;
+      padding: 28px;
+      border: 1px solid var(--ws-fog);
+      border-radius: var(--ws-radius-md);
+      background: var(--ws-paper);
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 120ms ease;
+    }
+    .meth-row a:hover {
+      border-color: color-mix(in oklab, var(--ws-fog) 40%, var(--ws-storm));
+    }
+    .meth-row header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .meth-row h2 { margin: 0; font-size: 22px; }
+    .meth-row__tagline { margin: 0 0 6px; font-weight: 500; }
+    .meth-row__summary { margin: 0 0 14px; opacity: 0.85; max-width: 70ch; }
+    .meth-row__projects {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ws-font-mono);
+      font-size: 13px;
+      color: var(--ws-storm);
+    }
+    .meth-row__label {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .meth-row__sep { opacity: 0.5; }
+    .meth-row__project { color: var(--ws-ink); }
+  </style>
+</Base>

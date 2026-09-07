@@ -51,8 +51,8 @@ Avoid anthropomorphizing the software. The system *processes*, *reads*,
 > ✗ weathership leverages cutting-edge AI to revolutionize how
 >   enterprises think about their data.
 >
-> ✓ weathership builds tools that read enterprise data and report what
->   they find. The reading is wrong sometimes; we say so when it is.
+> ✓ Signals is the federated hub. Sibling engines attach over
+>   signals-protocol; the warehouse is Kudu and Iceberg.
 
 > ✗ Aegir unlocks unprecedented insight into your data warehouse.
 >

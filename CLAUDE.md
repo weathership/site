@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 This repo hosts the public web presence and brand package for
-**weathership.org**, an open-source AI entity. Modeled on the sibling
-`gaius` project.
+**weathership.org**. Signals is the foundation those pages describe.
+Modeled on the sibling `gaius` project.
 
 Two deploy targets, same Cloudflare account:
 
@@ -88,15 +88,16 @@ inside `web/`.
   does `@import "../../../brand/colors/tokens.css"`. If you add a
   new color, add it once in `brand/colors/tokens.css` and update
   `brand/colors/palette.md` and `web/src/lib/brand-assets.ts:COLOR_TOKENS`.
-- **Project surfacing is gated by `status`.** Only `status: active`
+- **Project surfacing is gated by `status`.** All `status: active`
   projects appear on the landing page; the `/projects/` index shows
   every status. Use `status: preview` for projects that have a public
   repo but aren't yet ready for landing-page promotion (Vigil follows
   this pattern — repo is live, README is in flux). Use
   `visibility: stealth` (with no `repo`/`docs`) for projects we want
-  to hint at without naming; the card renders muted on `/projects/`
-  with an "in stealth — contact for details" affordance. Currently no
-  project uses `visibility: stealth` — Reach graduated out of it.
+  to hint at without naming; the card renders muted on `/projects/`.
+  Currently no project uses `visibility: stealth` — Reach graduated
+  out of it. Signals is order 1 and is the foundation the rest of
+  the copy assumes.
 - **Behave hits the deployed URL.** Tests are not unit tests of TS
   modules — they're acceptance tests against a serving target. Run
   `just web-preview` (or deploy and hit prod) before `just behave`.

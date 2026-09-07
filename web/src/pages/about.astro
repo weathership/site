@@ -1,39 +1,66 @@
 ---
 import Base from "../layouts/Base.astro";
 ---
-<Base title="About" description="weathership is an open-source AI entity. Calm, technical, durable. We build tools that read context.">
+<Base title="About" description="About weathership — Signals is the federated foundation; Gaius, Ægir, Atelier, Reach, and Vigil are the engines and systems that attach to it.">
   <article class="prose">
-    <p class="eyebrow">About weathership</p>
-    <h1>An open-source AI entity that reads context.</h1>
+    <p class="eyebrow">About</p>
+    <h1>Signals is the foundation.</h1>
 
     <p class="lede">
-      The name is a compound. A <em>weather ship</em> was once a vessel
-      stationed in open ocean for the express purpose of gathering
-      atmospheric data: a floating instrument that turned uncertainty
-      into signal so that the ships following behind could plan their
-      crossing. Our work plays the same role for the systems we build
-      alongside.
+      weathership builds open-source infrastructure for federated
+      engines, agents, and data products. Independent projects keep
+      their own gRPC, models, and UIs. They attach to
+      <a href="/projects/signals/">Signals</a> over a shared protocol,
+      scheduler, and warehouse.
     </p>
 
-    <h2>What we build</h2>
+    <h2>The lattice</h2>
+    <ul>
+      <li>
+        <a href="/projects/signals/">Signals</a> — protocol pin
+        (<a href="https://github.com/zndx/signals-protocol">signals-protocol</a>),
+        YuniKorn, Airflow, Metaflow, Atlas, and transparent hierarchical
+        storage (Kudu, Iceberg, Impala, PostgreSQL via impala_fdw).
+      </li>
+      <li>
+        <a href="/projects/gaius/">Gaius</a> — cognition engine; the
+        reference peer for protocol shapes.
+      </li>
+      <li>
+        <a href="/projects/aegir/">Ægir</a> — instruct; hierarchical
+        sequence models for relational metadata.
+      </li>
+      <li>
+        <a href="/projects/atelier/">Atelier</a> — referee; Dempster–Shafer
+        classification on a workbench.
+      </li>
+      <li>
+        <a href="/projects/sdg-corpora/">SDG corpora</a> — shared ontology
+        those engines train and evaluate against.
+      </li>
+      <li>
+        <a href="/projects/reach/">Reach</a> — event-sourced manufacturing.
+      </li>
+      <li>
+        <a href="/projects/vigil/">Vigil</a> — resource-oriented fabric
+        for high-latency sites.
+      </li>
+      <li>
+        <a href="https://github.com/zndx/oss-hermes-agent">Hermes Agent</a>
+        — agent peer; interactive sessions claim GPUs through Signals.
+      </li>
+    </ul>
     <p>
-      weathership is an umbrella for a set of related engineering
-      threads. Each project takes a system in motion — a data warehouse,
-      a knowledge graph, a manufacturing line — reads the conditions
-      that define it, and turns that reading into structured signal you
-      can act on.
-    </p>
-    <p>
-      We don't promise emergence, sentience, or revolutions.
+      Each project is inspectable in source and documented as it ships.
     </p>
 
     <h2>Mission</h2>
     <p>
-      To build durable, transparent AI tooling — systems whose behavior
-      is inspectable, whose decisions can be traced, and whose failure
-      modes are documented before they're hit. We release as open
-      source by default because the systems we want to exist need to be
-      reviewable by the people who depend on them.
+      To build durable, transparent infrastructure — systems whose
+      behavior is inspectable, whose decisions can be traced, and whose
+      failure modes are documented before they're hit. We release as
+      open source by default because the systems we want to exist need
+      to be reviewable by the people who depend on them.
     </p>
 
     <h2>Values</h2>
@@ -53,21 +80,22 @@ import Base from "../layouts/Base.astro";
       <dt>Durable</dt>
       <dd>
         We optimize for the system that's still useful in five years
-        over the demo that's compelling next week. Boring choices,
-        written down, for the long crossing.
+        over the demo that's compelling next week.
       </dd>
     </dl>
 
     <h2>Origin</h2>
     <p>
-      weathership was started by Ryan Hill in 2026 as the umbrella for
-      several related strands of work: hierarchical sequence models for
-      enterprise data governance, terminal-first interfaces for
-      graph-oriented domains, and an event-sourced actor system for
-      distributed manufacturing. The common thread is reading conditions
-      and acting on them — the weather of data, the weather of a system,
-      the weather of an industrial process. The projects predate the
-      entity. The entity exists because the projects benefit from being
+      A <em>weather ship</em> was once a vessel stationed in open ocean
+      for the express purpose of gathering atmospheric data — a
+      floating instrument that turned uncertainty into signal so the
+      ships following behind could plan their crossing. Signals plays
+      that role for the rest of the fleet.
+    </p>
+    <p>
+      weathership was started by Ryan Hill in 2026 to hold related
+      engineering threads under one umbrella. The projects predate the
+      umbrella; the umbrella exists because they benefit from being
       held together.
     </p>
 
@@ -77,9 +105,6 @@ import Base from "../layouts/Base.astro";
       PNG renders), color palette with copyable tokens, type system,
       usage guidelines, and press boilerplate. Everything on this site
       is downloadable.
-    </p>
-    <p class="caption">
-      we who saw the deep.
     </p>
   </article>
 
@@ -97,6 +122,8 @@ import Base from "../layouts/Base.astro";
       font-size: 19px;
       color: var(--ws-storm);
     }
+    .prose ul { padding-left: 1.2em; }
+    .prose li { margin: 0.45em 0; }
     .values { margin: 1em 0 2em; }
     .values dt {
       font-weight: 600;

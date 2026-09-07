@@ -4,7 +4,7 @@ tagline: "A global resource-oriented compute fabric for sovereign and high-laten
 status: "preview"
 repo: "https://github.com/weathership/vigil"
 visibility: "public"
-order: 4
+order: 7
 summary: "Resource-oriented compute fabric in the 1060 NetKernel tradition. Every artifact — raw events, queries, materialized views — is a URI-addressed, content-addressed resource that a kernel resolves to a DataFusion compute endpoint at rest."
 ---
 
@@ -63,11 +63,10 @@ representation as a request resolved at the origin.
 ## Position in the architecture
 
 Where Reach provides fast, deterministic local plumbing inside a
-single facility, Vigil federates those facilities into a coherent,
-programmable whole — no matter how far apart or disconnected they may
-be. Vigil is the slow, semantically rich, cryptographically hardened
-global cortex of the weathership architecture: ROC's URI-addressable
-abstraction stretched over Venti's content-addressable substrate.
+single facility, Vigil federates those facilities into one
+addressable plane — regardless of distance or disconnection. Resource
+identity is the hash; ROC's URI-addressable abstraction sits on
+Venti's content-addressable substrate.
 
 The project is in active, early development and will be released
 under the Apache 2.0 license.
