@@ -4,7 +4,7 @@ tagline: "Reproducible ontology-grounded corpora for data-governance models."
 status: "active"
 repo: "https://github.com/zndx/sdg-corpora"
 visibility: "public"
-order: 5
+order: 6
 summary: "Independently-versioned home for the Signals Data Governance corpora. Each commit is a reproducible convergence snapshot of the whole derivation chain — ontology, SKOS vocabulary, relational footprint, and generated corpus."
 ---
 

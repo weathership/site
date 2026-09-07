@@ -8,7 +8,8 @@ order: 1
 summary: "The weathership foundation: a shared protocol, scheduler, warehouse, and governance record. Independent engines attach over gRPC; workloads land in YuniKorn, Airflow, and Metaflow; data lives in Kudu and Iceberg, queried through Impala and PostgreSQL."
 ---
 
-Signals is the hub of the weathership federation. Sibling engines —
+Signals is the hub of the weathership federation. [Nautilus](/projects/nautilus/)
+supervises each attached stack. Sibling engines —
 [Gaius](/projects/gaius/), [Ægir](/projects/aegir/),
 [Atelier](/projects/atelier/), and [Hermes Agent](https://github.com/zndx/oss-hermes-agent)
 — keep their own products, native gRPC, and models. They meet here: one

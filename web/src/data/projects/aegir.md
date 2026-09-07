@@ -4,7 +4,7 @@ tagline: "Hierarchical sequence modeling with dynamic chunking."
 status: "active"
 docs: "https://zndx.github.io/aegir/"
 visibility: "public"
-order: 3
+order: 4
 summary: "The instruct engine on the Signals lattice. A hierarchical sequence model for semantic column annotation and cross-table data-element discovery on relational data."
 ---
 

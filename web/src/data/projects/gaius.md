@@ -4,7 +4,7 @@ tagline: "A cognition engine and terminal for graph-oriented data domains."
 status: "active"
 repo: "https://github.com/zndx/gaius"
 visibility: "public"
-order: 2
+order: 3
 summary: "The reference federated engine. Projects high-dimensional embeddings onto a 19×19 grid, runs topological and geometric analysis, and speaks signals-protocol so the rest of the lattice can discover its surfaces, workloads, and data products."
 ---
 

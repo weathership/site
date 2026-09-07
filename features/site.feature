@@ -32,19 +32,27 @@ Feature: weathership site smoke tests
     When I GET "/projects/"
     Then the response status is 200
     And the response body contains "Signals"
+    And the response body contains "Nautilus"
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"
     And the response body contains "Vigil"
 
-  Scenario: Landing page surfaces only active projects
+  Scenario: Landing page surfaces Nautilus as a featured band and other active projects
     When I GET "/"
     Then the response status is 200
     And the response body contains "Signals"
+    And the response body contains "Nautilus"
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"
     And the response body does not contain "Vigil"
+
+  Scenario: Nautilus project page renders
+    When I GET "/projects/nautilus/"
+    Then the response status is 200
+    And the response body contains "Deterministic supervisor"
+    And the response body contains "github.com/weathership/nautilus"
 
   Scenario: Media-kit overview links to subpages
     When I GET "/media-kit/"

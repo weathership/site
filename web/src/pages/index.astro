@@ -2,8 +2,9 @@
 import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 
+const nautilus = (await getCollection("projects")).find((p) => p.id === "nautilus");
 const projects = (await getCollection("projects"))
-  .filter((p) => p.data.status === "active")
+  .filter((p) => p.data.status === "active" && p.id !== "nautilus")
   .sort((a, b) => a.data.order - b.data.order);
 const projectMap = new Map(
   (await getCollection("projects")).map((p) => [p.id, p])
@@ -32,6 +33,42 @@ const news = (await getCollection("news"))
       <a class="button button--ghost" href="/about">About</a>
     </div>
   </section>
+
+  {nautilus && (
+    <section class="nautilus-band" aria-labelledby="nautilus-heading">
+      <div class="nautilus-band__inner">
+        <p class="nautilus-band__eyebrow">Supervision</p>
+        <div class="nautilus-band__grid">
+          <div>
+            <h2 id="nautilus-heading">{nautilus.data.name}</h2>
+            <p class="nautilus-band__lede">{nautilus.data.tagline}</p>
+            <p class="nautilus-band__body">{nautilus.data.summary}</p>
+            <div class="nautilus-band__cta">
+              <a class="button" href={`/projects/${nautilus.id}/`}>Project</a>
+              {nautilus.data.repo && (
+                <a class="button button--ghost nautilus-band__ghost" href={nautilus.data.repo}>GitHub</a>
+              )}
+            </div>
+          </div>
+          <ul class="nautilus-band__points">
+            <li>
+              <strong>Agent-free.</strong> Triggers are a pure function of
+              a snapshot. Judgment stays in the engine as Overwatch.
+            </li>
+            <li>
+              <strong>One instance per project.</strong> The protocol is
+              the grammar; each engine ships a textproto tree.
+            </li>
+            <li>
+              <strong>Scored, then promoted.</strong> Recycles, floors, and
+              escalations are forecasts on a Brier ledger — actuation
+              earns its keep.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section">
     <header class="section__head">
@@ -124,6 +161,79 @@ const news = (await getCollection("news"))
       max-width: 60ch;
     }
     .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .nautilus-band {
+      position: relative;
+      left: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      margin-top: 72px;
+      background: var(--ws-ink);
+      color: var(--ws-paper);
+      padding: 64px 0;
+    }
+    .nautilus-band__inner {
+      max-width: var(--ws-shell-max);
+      margin: 0 auto;
+      padding: 0 var(--ws-shell-pad);
+    }
+    .nautilus-band__eyebrow {
+      margin: 0 0 12px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ws-fog);
+    }
+    .nautilus-band__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+    .nautilus-band h2 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 4vw, 44px);
+      color: var(--ws-paper);
+    }
+    .nautilus-band__lede {
+      margin: 0 0 16px;
+      font-size: 19px;
+      color: var(--ws-fog);
+    }
+    .nautilus-band__body {
+      margin: 0 0 28px;
+      font-size: 16px;
+      color: color-mix(in oklab, var(--ws-paper) 82%, var(--ws-storm));
+      max-width: 58ch;
+    }
+    .nautilus-band__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .nautilus-band__ghost {
+      color: var(--ws-paper);
+      border-color: color-mix(in oklab, var(--ws-paper) 28%, transparent);
+    }
+    .nautilus-band__ghost:hover {
+      background: color-mix(in oklab, var(--ws-paper) 10%, transparent);
+    }
+    .nautilus-band__points {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 18px;
+    }
+    .nautilus-band__points li {
+      padding-top: 16px;
+      border-top: 1px solid color-mix(in oklab, var(--ws-paper) 14%, transparent);
+      font-size: 15px;
+      color: color-mix(in oklab, var(--ws-paper) 82%, var(--ws-storm));
+    }
+    .nautilus-band__points strong {
+      display: block;
+      color: var(--ws-paper);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
 
     .section { margin-top: 72px; }
     .section__head {
@@ -219,6 +329,7 @@ const news = (await getCollection("news"))
       .proj-grid { grid-template-columns: 1fr; }
       .meth-grid { grid-template-columns: 1fr; }
       .news-list a { grid-template-columns: 1fr; gap: 4px; }
+      .nautilus-band__grid { grid-template-columns: 1fr; gap: 28px; }
     }
   </style>
 </Base>

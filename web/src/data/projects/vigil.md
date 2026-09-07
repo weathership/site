@@ -4,7 +4,7 @@ tagline: "A global resource-oriented compute fabric for sovereign and high-laten
 status: "preview"
 repo: "https://github.com/weathership/vigil"
 visibility: "public"
-order: 7
+order: 8
 summary: "Resource-oriented compute fabric in the 1060 NetKernel tradition. Every artifact — raw events, queries, materialized views — is a URI-addressed, content-addressed resource that a kernel resolves to a DataFusion compute endpoint at rest."
 ---
 
