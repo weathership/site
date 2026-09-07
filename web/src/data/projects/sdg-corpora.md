@@ -9,7 +9,8 @@ summary: "Independently-versioned home for the Signals Data Governance corpora. 
 ---
 
 SDG corpora is the independently-versioned home for the Signals Data
-Governance datasets used across the weathership stack. Each commit is
+Governance datasets used across the weathership stack — the “what”
+sibling of [SDG strategy](/projects/sdg-strategy/). Each commit is
 a reproducible convergence snapshot of the whole derivation chain:
 the 540-template ontology catalog produces a SKOS vocabulary of 548
 concepts, which produces a deterministic relational footprint (DDL

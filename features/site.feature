@@ -36,7 +36,14 @@ Feature: weathership site smoke tests
     And the response body contains "Aegir"
     And the response body contains "Gaius"
     And the response body contains "Reach"
+    And the response body contains "SDG strategy"
     And the response body contains "Vigil"
+
+  Scenario: SDG strategy project page renders
+    When I GET "/projects/sdg-strategy/"
+    Then the response status is 200
+    And the response body contains "how it was made"
+    And the response body contains "github.com/zndx/sdg-strategy"
 
   Scenario: Landing page surfaces Nautilus as a featured band and other active projects
     When I GET "/"
