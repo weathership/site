@@ -22,6 +22,7 @@ Feature: weathership site smoke tests
     When I GET "/about"
     Then the response status is 200
     And the response body contains "Signals is the foundation"
+    And the response body contains "/media-kit/"
 
   Scenario: News index lists the launch post
     When I GET "/news/"
