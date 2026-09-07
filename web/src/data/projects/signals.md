@@ -55,13 +55,60 @@ SQL, cooler data as files. That is the warehouse.
 | Applications | PostgreSQL + [impala_fdw](https://github.com/weathership/impala_fdw) | One Kerberos principal into the data plane |
 
 Peers publish facts (UUIDv7 transaction ids, product names, object
-URIs) into this warehouse. They do not stand up a second catalog.
-Apache Atlas (AGE on PostgreSQL 16) is the lineage and classification
+URIs) into this warehouse. Atlas is the lineage and classification
 record; Ranger consumes those tags.
 
-The in-tree `sigint` pipeline still classifies columns into the SIGDG
-taxonomy — Dempster–Shafer fusion, SAGE-measured features — and writes
-the Atlas tags the rest of the federation already consumes.
+## OpenLineage on Atlas
+
+Governance and runtime lineage live in one process: an
+[Apache Atlas](https://atlas.apache.org/) fork
+([rch/asf-atlas](https://github.com/rch/asf-atlas)) with Apache AGE
+on PostgreSQL 16. Existing Atlas clients keep `/api/atlas/*`. The
+OpenLineage extension adds the **complete Marquez REST surface** on
+the same host:
+
+- `POST /api/v1/lineage` — OpenLineage RunEvent ingest
+- `/api/v1/{namespaces,jobs,runs,datasets,events,lineage,column-lineage,tags,search,stats,sources}`
+- `/api/v2beta/search/{jobs,datasets}`
+
+Job, run, dataset, and facet records sit in the AGE graph plus
+relational lineage tables (`lineage_events`, `lineage_namespaces`,
+`lineage_tags`, `lineage_sources`). Producers — Airflow, Metaflow,
+Flink, Gaius, `sigint` — talk only to Signals.
+
+[Marquez](https://marquezproject.github.io/marquez/) **web** is the
+OpenLineage UI for that API. It binds Atlas HTTP + 1 (lab:
+`:21011` → `:21010`) and proxies `/api/v1` and `/api/v2beta` to
+Atlas. Jobs, datasets, events, search, stats, and lineage graphs
+render from the Atlas store. The UI is the acceptance harness that
+the REST contract is complete: every path Marquez-web calls returns
+Marquez-shaped JSON.
+
+## Atlas through PostgreSQL (impala_fdw)
+
+Heavy Atlas and OpenLineage analytics scale through
+[impala_fdw](https://github.com/weathership/impala_fdw) on the same
+PostgreSQL that hosts AGE — one Kerberos principal into graph
+metadata and warehouse rows.
+
+Typed Atlas projections land on Kudu (`atlas.entity_flat`,
+`entity_by_qn`, dual adjacency for edges, classifications) via an
+idempotent outbox. Postgres foreign tables
+(`atlas_entity_flat`, …) default to `access=auto`: closed shapes
+use `kudu_scan` (`libkudu_client`); Iceberg cold tiers and Impala
+`UNION ALL` views of hot Kudu ∪ warm Iceberg use `impala_sql` over
+HS2. Agents and AGE queries join lineage in Postgres to Kudu and
+Iceberg without a second catalog.
+
+```bash
+just impala-fdw-build && just impala-fdw-install
+just atlas-kudu-projections-seed
+psql -p 5455 -d signals
+```
+
+The in-tree `sigint` pipeline classifies columns into the SIGDG
+taxonomy — Dempster–Shafer fusion, SAGE-measured features — and
+writes the Atlas tags the rest of the federation already consumes.
 
 Source: [weathership/signals](https://github.com/weathership/signals).
 Control plane UI on a running stack: port 9889.

@@ -70,6 +70,13 @@ Feature: weathership site smoke tests
     And the response body contains "Deterministic supervisor"
     And the response body contains "github.com/weathership/nautilus"
 
+  Scenario: Signals project page covers OpenLineage and impala_fdw
+    When I GET "/projects/signals/"
+    Then the response status is 200
+    And the response body contains "OpenLineage"
+    And the response body contains "Marquez"
+    And the response body contains "impala_fdw"
+
   Scenario: Media-kit overview links to subpages
     When I GET "/media-kit/"
     Then the response status is 200
