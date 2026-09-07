@@ -20,7 +20,7 @@ The IIO dataset captures, per row: `prompt_text`, `raw_completion`, the parsed `
 
 The core pipeline lives in Aegir, not Atelier — the only Atelier reference in the relevant module tree is a vocabulary-ttl comment about a shared belief-interval concept. The clustering and Hungarian-match primitives are in `src/aegir/ontology/topic_alignment.py` (`fit_topic_model`, `alignment_score`, `normalize_alignment`); the four-component scorer is in `src/aegir/ontology/verifier.py` with weights `W_R_B = 0.50, W_R_C = 0.05, W_R_D = 0.45` ("C1-locked"); the extraction script is `scripts/p5_extract_correspondence.py`, which reads the two rejection-sampling corpora, the catalog snapshot, the cached `T_I.pkl`, and the null statistics, and writes `correspondence.parquet` plus side files. The published artifact is `zndx/sdg-bertopic-correspondence-v0.1` on Hugging Face under CC-BY-4.0, with 1,405 rows across two policies (`base`, `sft-r1`).
 
-The dataset is v0.1 and explicitly marked peer-review preview; schema and methodology may evolve. Domain coverage is skewed toward `sdg:` / `cco:` namespaces, only 183 of 540 catalog templates appear, and all generations come from a single base model (`Qwen3.5-9B-Base`), so cross-model generalisation is not assessed here.
+The dataset is v0.1 and explicitly marked peer-review preview; schema and methodology may evolve. Domain coverage is skewed toward `sdg:` / `cco:` namespaces, and all generations come from a single base model (`Qwen3.5-9B-Base`), so cross-model generalisation is not assessed here. The BERTopic-era topic instruments this method describes are superseded in production by the inverted topic layer and congruence over the OWL ⊨ SKOS retrieval face.
 
 ## References
 

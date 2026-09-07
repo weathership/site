@@ -16,11 +16,11 @@ schema; every artifact ships with the generator's reasoning trace.
 
 The release is shaped to the workflow [Atelier](/projects/atelier/)
 consumes. Blind columns — values plus vocabulary — are public; the
-per-column reference codes (which template produced which column)
-are held back as the scoring key. The result is independent,
-pre-training efficacy feedback on the corpus, and a clean baseline
-against which to measure the lift [Aegir](/projects/aegir/)'s
-hierarchical sequence model delivers downstream.
+per-column class reference is held back as the scoring key. The
+result is independent, pre-training efficacy feedback on the corpus,
+and a clean baseline against which to measure the lift
+[Aegir](/projects/aegir/)'s hierarchical sequence model delivers
+downstream.
 
 Apache 2.0. The source artifacts live in the
 [sdg-corpora repository](https://github.com/zndx/sdg-corpora) and as
