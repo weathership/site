@@ -4,7 +4,7 @@ tagline: "Event-sourced actor system for distributed manufacturing."
 status: "active"
 repo: "https://github.com/weathership/reach"
 visibility: "public"
-order: 8
+order: 9
 summary: "Process-separated architecture using Apache Kudu for event persistence and Aeron IPC for sub-microsecond inter-process messaging."
 ---
 

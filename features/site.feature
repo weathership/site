@@ -37,7 +37,14 @@ Feature: weathership site smoke tests
     And the response body contains "Gaius"
     And the response body contains "Reach"
     And the response body contains "SDG strategy"
+    And the response body contains "Kvasir"
     And the response body contains "Vigil"
+
+  Scenario: Kvasir project page renders
+    When I GET "/projects/kvasir/"
+    Then the response status is 200
+    And the response body contains "Fragment-gated OWL reasoner"
+    And the response body contains "github.com/zndx/kvasir"
 
   Scenario: SDG strategy project page renders
     When I GET "/projects/sdg-strategy/"
@@ -55,6 +62,7 @@ Feature: weathership site smoke tests
     And the response body contains "Reach"
     And the response body does not contain "Vigil"
     And the response body does not contain "SDG strategy"
+    And the response body does not contain "Kvasir"
 
   Scenario: Nautilus project page renders
     When I GET "/projects/nautilus/"

@@ -4,7 +4,7 @@ tagline: "Content-addressed record of how a Signals data product was made."
 status: "active"
 repo: "https://github.com/zndx/sdg-strategy"
 visibility: "public"
-order: 7
+order: 8
 summary: "Sibling of SDG corpora. A STRATEGY is the Merkle-shaped answer to why the pipeline did that: lens, voices, knobs, and targets — every outcome-shaping determinant that is neither the input window nor the code commit."
 ---
 

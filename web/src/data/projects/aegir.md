@@ -31,8 +31,8 @@ is what Hermes and other peers call for short-form completion.
 Aegir also owns the SDG ontology and the corpus it generates. OWL is
 the source of truth (BFO 2020 / CCO, HermiT-certified). SKOS and SHACL
 are entailed views of that OWL; loadable SQL is a relational
-projection of it. That chain is published as
-[SDG corpora](/projects/sdg-corpora/) — see
+projection of it, emitted by [Kvasir](/projects/kvasir/). That chain
+is published as [SDG corpora](/projects/sdg-corpora/) — see
 [OWL ⊨ SKOS ⊨ SHACL](/methods/convergence-snapshot-derivation/).
 
 The source repository is private; published documentation, design

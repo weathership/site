@@ -90,8 +90,8 @@ inside `web/`.
   `brand/colors/palette.md` and `web/src/lib/brand-assets.ts:COLOR_TOKENS`.
 - **Project surfacing is gated by `status`.** The landing card grid
   shows at most six `status: active` projects (Nautilus is the
-  full-width band instead of a card; SDG strategy is all-projects
-  only). The `/projects/` index shows every status. Use
+  full-width band instead of a card; SDG strategy and Kvasir are
+  all-projects only). The `/projects/` index shows every status. Use
   `status: preview` for projects that have a public repo but aren't
   yet ready for landing-page promotion (Vigil follows this pattern —
   repo is live, README is in flux). Use `visibility: stealth` (with

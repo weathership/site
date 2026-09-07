@@ -5,7 +5,7 @@ status: "active"
 repo: "https://github.com/zndx/atelier"
 docs: "https://zndx.github.io/atelier/"
 visibility: "public"
-order: 5
+order: 6
 summary: "The referee engine on the Signals lattice. An interactive workbench that fuses six evidence sources through Dempster–Shafer belief functions to produce uncertainty-quantified column classifications."
 ---
 
