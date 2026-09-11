@@ -7,6 +7,7 @@ Feature: weathership site smoke tests
     When I GET "/"
     Then the response status is 200
     And the response body contains "weathership"
+    And the response body contains "weathership.github.io/signals/"
 
   Scenario: Worker health endpoint
     When I GET "/health"
