@@ -101,9 +101,10 @@ const news = (await getCollection("news"))
     </header>
     <div class="meth-grid">
       {methods.map((m) => {
-        const linked = m.data.projects
-          .map((slug) => projectMap.get(slug))
-          .filter(Boolean);
+        const linked = m.data.projects.flatMap((slug) => {
+          const project = projectMap.get(slug);
+          return project ? [project] : [];
+        });
         return (
           <a class="meth-card" href={`/methods/${m.id}/`}>
             <h3>{m.data.name}</h3>

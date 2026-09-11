@@ -15,9 +15,10 @@ const { Content } = await render(method);
 
 const projects = await getCollection("projects");
 const projectMap = new Map(projects.map((p) => [p.id, p]));
-const linkedProjects = method.data.projects
-  .map((slug) => projectMap.get(slug))
-  .filter(Boolean);
+const linkedProjects = method.data.projects.flatMap((slug) => {
+  const project = projectMap.get(slug);
+  return project ? [project] : [];
+});
 ---
 <Base title={method.data.name} description={method.data.summary}>
   <article class="meth">

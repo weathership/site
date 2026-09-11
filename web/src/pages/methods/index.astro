@@ -22,9 +22,10 @@ const projectMap = new Map(projects.map((p) => [p.id, p]));
 
   <ul class="meth-list">
     {methods.map((m) => {
-      const linked = m.data.projects
-        .map((slug) => projectMap.get(slug))
-        .filter(Boolean);
+      const linked = m.data.projects.flatMap((slug) => {
+        const project = projectMap.get(slug);
+        return project ? [project] : [];
+      });
       return (
         <li class="meth-row">
           <a href={`/methods/${m.id}/`}>
